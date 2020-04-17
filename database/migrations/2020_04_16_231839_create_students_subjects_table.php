@@ -13,7 +13,7 @@ class CreateStudentsSubjectsTable extends Migration
      */
     public function up()
     {
-        Schema::create('students_subjects', function (Blueprint $table) {
+        Schema::create('student_subject', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
 
@@ -22,7 +22,7 @@ class CreateStudentsSubjectsTable extends Migration
 
 
             $table->foreign('student_id')->references('id')->on('users')->nullable();
-            $table->foreign('subject_id')->references('id')->on('students_subjects')->nullable();
+            $table->foreign('subject_id')->references('id')->on('subjects')->nullable();
         });
     }
 
@@ -33,6 +33,6 @@ class CreateStudentsSubjectsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('students_subjects');
+        Schema::dropIfExists('student_subject');
     }
 }

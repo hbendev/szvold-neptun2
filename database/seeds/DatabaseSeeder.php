@@ -25,9 +25,15 @@ class DatabaseSeeder extends Seeder
             'lastName' => 'super',
             'type' => 'student',
             'email' => 'student@neptun2.com',
-            'password' => Hash::make('student'),
+            'password' => Hash::make( 'student'),
         ]);
-        factory(App\User::class, 50)->create();
-        factory(App\Subject::class, 20)->create();
+        factory(App\User::class, 10)->create();
+        factory(App\Subject::class, 20)->create()->each(function ($subject) {
+            $superTeacher = App\User::where('id', '1') -> first();
+            $superStudent = App\User::where('id', '2') -> first();
+            $subject -> creator() -> associate($superTeacher);
+            $subject -> students() -> sync($superStudent);
+            $subject -> save();
+        });
     }
 }

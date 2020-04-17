@@ -23,4 +23,14 @@ class Subject extends Model
     protected $hidden = [
         'identifier', 'name', 'creator_id'
     ];
+
+    public function creator()
+    {
+        return $this->belongsTo('App\User', 'creator_id');
+    }
+
+    public function students()
+    {
+        return $this->belongsToMany('App\Subject', 'student_subject', 'subject_id', 'student_id' );
+    }
 }

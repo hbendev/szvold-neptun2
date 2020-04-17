@@ -26,4 +26,14 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function ownedSubjects()
+    {
+        return $this->hasMany('App\Subject');
+    }
+
+    public function subjects()
+    {
+        return $this->belongsToMany('App\Subject', 'student_subject', 'student_id', 'subject_id');
+    }
 }
