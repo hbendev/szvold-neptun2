@@ -21,7 +21,7 @@
 </head>
 <body>
     <div id="app">
-        <header-component></header-component>
+        <header-component testdata="sdfsdf" user={{ Auth::user() }}></header-component>
 
         <main class="py-4">
             @yield('content')

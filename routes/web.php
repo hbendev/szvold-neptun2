@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,5 +20,10 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+
+Route::post('/logout', function(){
+    Auth::logout();
+    return Redirect::to('/');
+ })->name('logout');
 
 Route::get('/home', 'HomeController@index')->name('home');
