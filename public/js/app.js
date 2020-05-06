@@ -21066,8 +21066,8 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
 
-customElements.define("header-component", _components_Header_svelte__WEBPACK_IMPORTED_MODULE_1__["default"]);
 customElements.define("app-component", _components_App_svelte__WEBPACK_IMPORTED_MODULE_0__["default"]);
+customElements.define("header-component", _components_Header_svelte__WEBPACK_IMPORTED_MODULE_1__["default"]);
 
 /***/ }),
 
@@ -21130,7 +21130,7 @@ function create_fragment(ctx) {
   <p>wat</p>`;
 
 			this.c = svelte_internal__WEBPACK_IMPORTED_MODULE_0__["noop"];
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(div, "class", "");
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(div, "class", "flex");
 		},
 		m(target, anchor) {
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["insert"])(target, div, anchor);
@@ -21155,6 +21155,7 @@ function instance($$self) {
 class App extends svelte_internal__WEBPACK_IMPORTED_MODULE_0__["SvelteElement"] {
 	constructor(options) {
 		super();
+		this.shadowRoot.innerHTML = `<style>@import "css/app.css";</style>`;
 		Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["init"])(this, { target: this.shadowRoot }, instance, create_fragment, svelte_internal__WEBPACK_IMPORTED_MODULE_0__["safe_not_equal"], {});
 
 		if (options) {
@@ -21189,15 +21190,12 @@ function create_fragment(ctx) {
 		c() {
 			nav = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("nav");
 
-			nav.innerHTML = `<div class="container"><a class="navbar-brand" href="/">Neptun 2</a> 
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button> 
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent"><ul class="navbar-nav mr-auto"></ul> 
-      <ul class="navbar-nav ml-auto"><li class="nav-item"><a class="nav-link" href="/login">Login</a></li> 
-        <li class="nav-item"><a class="nav-link" href="/register">Register</a></li></ul></div></div>`;
+			nav.innerHTML = `<ul class="flex"><li><a href="/login">Login</a></li> 
+    <li><a href="/register">Register</a></li> 
+    <li><a href="/">Neptun 2</a></li></ul>`;
 
 			this.c = svelte_internal__WEBPACK_IMPORTED_MODULE_0__["noop"];
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(nav, "class", "navbar navbar-expand-md navbar-light bg-white shadow-sm");
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(nav, "class", "");
 		},
 		m(target, anchor) {
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["insert"])(target, nav, anchor);
@@ -21214,6 +21212,7 @@ function create_fragment(ctx) {
 class Header extends svelte_internal__WEBPACK_IMPORTED_MODULE_0__["SvelteElement"] {
 	constructor(options) {
 		super();
+		this.shadowRoot.innerHTML = `<style>@import "css/app.css";</style>`;
 		Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["init"])(this, { target: this.shadowRoot }, null, create_fragment, svelte_internal__WEBPACK_IMPORTED_MODULE_0__["safe_not_equal"], {});
 
 		if (options) {

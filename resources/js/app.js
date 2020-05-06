@@ -9,5 +9,5 @@ require("./bootstrap");
 import App from "./components/App.svelte";
 import Header from "./components/Header.svelte";
 
-customElements.define("header-component", Header);
 customElements.define("app-component", App);
+customElements.define("header-component", Header);

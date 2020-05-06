@@ -1,5 +1,6 @@
 const mix = require("laravel-mix");
 const tailwindcss = require("tailwindcss");
+const sveltePreprocess = require("svelte-preprocess");
 require("laravel-mix-svelte");
 
 /*
@@ -14,6 +15,7 @@ require("laravel-mix-svelte");
  */
 
 mix.js("resources/js/app.js", "public/js").svelte({
+    preprocess: sveltePreprocess({ postcss: true }),
     customElement: true,
     tag: null // to get rid of "no custom element tag name" warning because we are defining components tag name it in app.js file. otherwise you would have to put "<svelte:options tag={null} />" in all of your custom elements.
 });
