@@ -1,6 +1,6 @@
-const mix = require('laravel-mix');
-const tailwindcss = require('tailwindcss')
-require('laravel-mix-svelte');
+const mix = require("laravel-mix");
+const tailwindcss = require("tailwindcss");
+require("laravel-mix-svelte");
 
 /*
  |--------------------------------------------------------------------------
@@ -13,12 +13,12 @@ require('laravel-mix-svelte');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .svelte();
+mix.js("resources/js/app.js", "public/js").svelte({
+    customElement: true,
+    tag: null // to get rid of "no custom element tag name" warning because we are defining components tag name it in app.js file. otherwise you would have to put "<svelte:options tag={null} />" in all of your custom elements.
+});
 
-
-mix.sass('resources/sass/app.scss', 'public/css')
-    .options({
-        processCssUrls: false,
-        postCss: [ tailwindcss('tailwind.config.js') ],
-})
+mix.sass("resources/sass/app.scss", "public/css").options({
+    processCssUrls: false,
+    postCss: [tailwindcss("tailwind.config.js")]
+});

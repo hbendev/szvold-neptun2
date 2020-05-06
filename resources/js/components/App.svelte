@@ -1,13 +1,12 @@
 <script>
-	import { onMount } from "svelte";
+  import { onMount } from "svelte";
 
-	onMount(() => {
-	  console.log("the component has mounted");
-	});
+  onMount(() => {
+    console.log("the component has mounted");
+  });
 </script>
 
-<main>
-	<div class="">
-		<p class="text-gray">random valami</p>
-	</div>
-</main>
+<div class="">
+  <p class="text-gray">random valamis</p>
+  <p>wat</p>
+</div>
