@@ -39,4 +39,6 @@ Route::get('/home', 'HomeController@index')->middleware('auth')->name('home');
 Route::get('/users', 'Users@getUsers');
 Route::get('/studentCount', 'Users@getStudentCount');
 Route::get('/teacherCount', 'Users@getTeacherCount');
-Route::get('/subjectsCreatedBy', 'Subjects@getSubjectsCreatedByTeacher');
+Route::get('/subjectsCreatedBy', 'Subjects@subjectsCreatedByTeacher');
+Route::post('/changeSubjectPublish/{subject}', 'Subjects@changeSubjectPublish');
+Route::get('/studentSubjects/{student}', 'Subjects@studentSubjects');
