@@ -24,7 +24,7 @@
         {title}
       </h5>
       <h3 class="font-bold text-3xl text-gray-300 group-hover:text-white">
-        {data}
+        {data || 'Betöltés..'}
       </h3>
     </div>
   </div>
