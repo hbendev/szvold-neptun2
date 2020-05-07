@@ -21276,10 +21276,10 @@ function create_if_block_1(ctx) {
 	return {
 		c() {
 			li0 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("li");
-			li0.innerHTML = `<a href="/login">Login</a>`;
+			li0.innerHTML = `<a href="/login">Belépés</a>`;
 			t1 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
 			li1 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("li");
-			li1.innerHTML = `<a href="/register">Register</a>`;
+			li1.innerHTML = `<a href="/register">Regisztáció</a>`;
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(li0, "class", "hover:text-white hover:font-bold");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(li1, "class", "hover:text-white hover:font-bold");
 		},

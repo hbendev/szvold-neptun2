@@ -16,10 +16,10 @@
     </li>
     {#if !user}
       <li class="hover:text-white hover:font-bold">
-        <a href="/login">Login</a>
+        <a href="/login">Belépés</a>
       </li>
       <li class="hover:text-white hover:font-bold">
-        <a href="/register">Register</a>
+        <a href="/register">Regisztáció</a>
       </li>
     {/if}
     {#if user}
