@@ -6,7 +6,7 @@
       .querySelector('meta[name="csrf-token"]')
       .getAttribute("content");
     try {
-      const result = await fetch(`/changeSubjectPublish/${id}`, {
+      const result = await fetch(`/abandonSubject/${id}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -17,10 +17,8 @@
         credentials: "same-origin"
       }).then(data => data.json());
 
-      debugger;
-      subjects = subjects.map(subject =>
-        subject.id !== id ? subject : result
-      );
+      // TODO: This has to redirect according to the task
+      subjects = subjects.filter(subject => subject.id !== id);
     } catch (err) {
       console.error(err);
     }
@@ -44,11 +42,6 @@
 </style>
 
 <section class="container mx-auto overflow-x-visible">
-  <button
-    class="font-bold py-2 px-4 rounded text-lg bg-green-400 hover:bg-green-600
-    text-white ">
-    Új tárgy +
-  </button>
   <div class="bg-white shadow-md rounded my-6">
     <table class="text-left w-full border-collapse">
       <!--Border collapse doesn't work on this site yet but it's available in newer tailwind versions -->

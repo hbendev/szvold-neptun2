@@ -21769,7 +21769,7 @@ function get_each_context(ctx, list, i) {
 	return child_ctx;
 }
 
-// (90:8) {#each subjects as subject}
+// (83:8) {#each subjects as subject}
 function create_each_block(ctx) {
 	let tr;
 	let td0;
@@ -21880,12 +21880,10 @@ function create_each_block(ctx) {
 
 function create_fragment(ctx) {
 	let section;
-	let button;
-	let t1;
 	let div;
 	let table;
 	let thead;
-	let t13;
+	let t11;
 	let tbody;
 	let each_value = /*subjects*/ ctx[0];
 	let each_blocks = [];
@@ -21897,9 +21895,6 @@ function create_fragment(ctx) {
 	return {
 		c() {
 			section = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("section");
-			button = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("button");
-			button.textContent = "Új tárgy +";
-			t1 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
 			div = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("div");
 			table = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("table");
 			thead = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("thead");
@@ -21929,7 +21924,7 @@ function create_fragment(ctx) {
             Funkciók
           </th></tr>`;
 
-			t13 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
+			t11 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
 			tbody = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("tbody");
 
 			for (let i = 0; i < each_blocks.length; i += 1) {
@@ -21937,19 +21932,16 @@ function create_fragment(ctx) {
 			}
 
 			this.c = svelte_internal__WEBPACK_IMPORTED_MODULE_0__["noop"];
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(button, "class", "font-bold py-2 px-4 rounded text-lg bg-green-400 hover:bg-green-600\n    text-white ");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(table, "class", "text-left w-full border-collapse");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(div, "class", "bg-white shadow-md rounded my-6");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(section, "class", "container mx-auto overflow-x-visible");
 		},
 		m(target, anchor) {
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["insert"])(target, section, anchor);
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(section, button);
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(section, t1);
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(section, div);
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(div, table);
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(table, thead);
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(table, t13);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(table, t11);
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(table, tbody);
 
 			for (let i = 0; i < each_blocks.length; i += 1) {
@@ -21995,7 +21987,7 @@ function instance($$self, $$props, $$invalidate) {
 		let token = document.querySelector("meta[name=\"csrf-token\"]").getAttribute("content");
 
 		try {
-			const result = await fetch(`/changeSubjectPublish/${id}`, {
+			const result = await fetch(`/abandonSubject/${id}`, {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
@@ -22006,8 +21998,8 @@ function instance($$self, $$props, $$invalidate) {
 				credentials: "same-origin"
 			}).then(data => data.json());
 
-			debugger;
-			$$invalidate(0, subjects = subjects.map(subject => subject.id !== id ? subject : result));
+			// TODO: This has to redirect according to the task
+			$$invalidate(0, subjects = subjects.filter(subject => subject.id !== id));
 		} catch(err) {
 			console.error(err);
 		}
@@ -22533,7 +22525,6 @@ function instance($$self, $$props, $$invalidate) {
 	Object(svelte__WEBPACK_IMPORTED_MODULE_2__["onMount"])(async function () {
 		$$invalidate(0, teacherCount = await fetch("/teacherCount").then(count => count.text()));
 		$$invalidate(1, studentCount = await fetch("/studentCount").then(count => count.text()));
-		debugger;
 	});
 
 	return [teacherCount, studentCount];

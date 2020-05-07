@@ -42,3 +42,4 @@ Route::get('/teacherCount', 'Users@getTeacherCount');
 Route::get('/subjectsCreatedBy', 'Subjects@subjectsCreatedByTeacher');
 Route::post('/changeSubjectPublish/{subject}', 'Subjects@changeSubjectPublish');
 Route::get('/studentSubjects/{student}', 'Subjects@studentSubjects');
+Route::post('/abandonSubject/{subject}', 'Users@abandonSubject');
