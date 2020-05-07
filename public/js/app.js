@@ -21198,6 +21198,8 @@ function create_if_block_1(ctx) {
 			t1 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
 			li1 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("li");
 			li1.innerHTML = `<a href="/register">Register</a>`;
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(li0, "class", "hover:text-white hover:font-bold");
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(li1, "class", "hover:text-white hover:font-bold");
 		},
 		m(target, anchor) {
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["insert"])(target, li0, anchor);
@@ -21212,7 +21214,7 @@ function create_if_block_1(ctx) {
 	};
 }
 
-// (30:4) {#if user}
+// (23:4) {#if user}
 function create_if_block(ctx) {
 	let li;
 
@@ -21220,6 +21222,7 @@ function create_if_block(ctx) {
 		c() {
 			li = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("li");
 			li.innerHTML = `<form action="/logout" method="POST"><button>Kilépés</button></form>`;
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(li, "class", "hover:text-white hover:font-bold");
 		},
 		m(target, anchor) {
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["insert"])(target, li, anchor);
@@ -21250,8 +21253,9 @@ function create_fragment(ctx) {
 			t2 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
 			if (if_block1) if_block1.c();
 			this.c = svelte_internal__WEBPACK_IMPORTED_MODULE_0__["noop"];
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(ul, "class", "h-16 flex justify-between items-center");
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(nav, "class", "w-5/6 mx-auto");
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(li, "class", "hover:text-white hover:font-bold");
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(ul, "class", "w-5/6 mx-auto h-16 flex justify-between items-center font-medium");
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(nav, "class", "bg-blue-400 text-gray-200");
 		},
 		m(target, anchor) {
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["insert"])(target, nav, anchor);
@@ -21300,32 +21304,20 @@ function create_fragment(ctx) {
 }
 
 function instance($$self, $$props, $$invalidate) {
-	let { testdata } = $$props;
-	let { user } = $$props; // json, but empty if logged in
-
-	Object(svelte__WEBPACK_IMPORTED_MODULE_1__["onMount"])(() => {
-		setTimeout(
-			() => {
-				debugger;
-				console.log({ testdata }, { user }); // work
-			},
-			0
-		);
-	});
+	let { user } = $$props;
 
 	$$self.$set = $$props => {
-		if ("testdata" in $$props) $$invalidate(1, testdata = $$props.testdata);
 		if ("user" in $$props) $$invalidate(0, user = $$props.user);
 	};
 
-	return [user, testdata];
+	return [user];
 }
 
 class Header extends svelte_internal__WEBPACK_IMPORTED_MODULE_0__["SvelteElement"] {
 	constructor(options) {
 		super();
 		this.shadowRoot.innerHTML = `<style>@import "css/app.css";</style>`;
-		Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["init"])(this, { target: this.shadowRoot }, instance, create_fragment, svelte_internal__WEBPACK_IMPORTED_MODULE_0__["safe_not_equal"], { testdata: 1, user: 0 });
+		Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["init"])(this, { target: this.shadowRoot }, instance, create_fragment, svelte_internal__WEBPACK_IMPORTED_MODULE_0__["safe_not_equal"], { user: 0 });
 
 		if (options) {
 			if (options.target) {
@@ -21340,16 +21332,7 @@ class Header extends svelte_internal__WEBPACK_IMPORTED_MODULE_0__["SvelteElement
 	}
 
 	static get observedAttributes() {
-		return ["testdata", "user"];
-	}
-
-	get testdata() {
-		return this.$$.ctx[1];
-	}
-
-	set testdata(testdata) {
-		this.$set({ testdata });
-		Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["flush"])();
+		return ["user"];
 	}
 
 	get user() {
