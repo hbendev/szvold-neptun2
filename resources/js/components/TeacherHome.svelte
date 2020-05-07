@@ -18,7 +18,7 @@
       }).then(data => data.json());
 
       subjects = subjects.map(subject =>
-        subjects.id !== id ? subject : result
+        subject.id !== id ? subject : result
       );
     } catch (err) {
       console.error(err);

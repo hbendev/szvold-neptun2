@@ -1,12 +1,12 @@
 <script>
   import { onMount } from "svelte";
-  async function abandonSubject(id) {
+  async function enroll(id) {
     // we need the token, and other things to work with laravel
     let token = document
       .querySelector('meta[name="csrf-token"]')
       .getAttribute("content");
     try {
-      const result = await fetch(`/abandonSubject/${id}`, {
+      const result = await fetch(`/enrollSubject/${id}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -17,7 +17,6 @@
         credentials: "same-origin"
       }).then(data => data.json());
 
-      // TODO: This has to redirect according to the task
       subjects = subjects.filter(subject => subject.id !== id);
     } catch (err) {
       console.error(err);
@@ -26,14 +25,8 @@
 
   let subjects = [];
 
-  export let userid;
-
-  onMount(() => {
-    setTimeout(async () => {
-      subjects = await fetch(`/studentSubjects/${userid}`).then(data =>
-        data.json()
-      );
-    }, 0);
+  onMount(async () => {
+    subjects = await fetch("/studentNotEnrolled").then(data => data.json());
   });
 </script>
 
@@ -95,18 +88,11 @@
             </td>
             <td class="py-4 px-6 border-b border-gray-400">
               <button
-                on:click={() => abandonSubject(subject.id)}
+                on:click={() => enroll(subject.id)}
                 class="text-gray-200 font-bold py-1 px-3 rounded text-xs
-                bg-red-400 hover:bg-red-600">
-                Lead
+                bg-green-400 hover:bg-green-600">
+                Tárgy felvétele
               </button>
-              <a href={`/subject/${subject.id}`}>
-                <button
-                  class="text-gray-200 font-bold py-1 px-3 rounded text-xs
-                  bg-blue-400 hover:bg-blue-600">
-                  Részletek
-                </button>
-              </a>
             </td>
           </tr>
         {/each}

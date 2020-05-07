@@ -27,6 +27,15 @@ class Subjects extends Controller
         return response()->json($subjects);
     }
 
+    public function studentNotEnrolled()
+    {
+        $subjects = Subject::whereDoesntHave('students', function (Builder $query) {
+            $query->where('student_id', Auth::user()->id);
+        })->with('creator')->get();
+
+        return response()->json($subjects);
+    }
+
     public function changeSubjectPublish($subjectId){
         $subject = Subject::find($subjectId);
 

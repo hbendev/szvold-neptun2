@@ -34,6 +34,10 @@ Route::get('/profile', function () {
     return view('profile');
 })->middleware('auth')->name('profile');
 
+Route::get('/enroll', function () {
+    return view('enroll');
+})->middleware('auth')->name('enroll');
+
 Route::get('/home', 'HomeController@index')->middleware('auth')->name('home');
 
 Route::get('/users', 'Users@getUsers');
@@ -42,4 +46,6 @@ Route::get('/teacherCount', 'Users@getTeacherCount');
 Route::get('/subjectsCreatedBy', 'Subjects@subjectsCreatedByTeacher');
 Route::post('/changeSubjectPublish/{subject}', 'Subjects@changeSubjectPublish');
 Route::get('/studentSubjects/{student}', 'Subjects@studentSubjects');
+Route::get('/studentNotEnrolled', 'Subjects@studentNotEnrolled');
 Route::post('/abandonSubject/{subject}', 'Users@abandonSubject');
+Route::post('/enrollSubject/{subject}', 'Users@enrollSubject');

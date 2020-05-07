@@ -39,6 +39,14 @@ class Users extends Controller
         $subject->save();
 
         return response()->json($subject);
+    }
 
+    public function enrollSubject($subjectId){
+        Auth::check();
+        $subject = Subject::find($subjectId);
+        $subject->students()->attach(Auth::user()->id);
+        $subject->save();
+
+        return response()->json($subject);
     }
 }
