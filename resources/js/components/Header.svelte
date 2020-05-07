@@ -25,22 +25,32 @@
       </li>
     {/if}
     {#if user}
-      <li class="hover:text-white hover:font-bold">
-        <form action="/logout" method="POST">
-          <button>Kilépés</button>
-        </form>
-      </li>
-      <li class="hover:text-white hover:font-bold">
-        <a href="/profile">
-          {JSON.parse(user).lastName} {JSON.parse(user).firstName}
-        </a>
-      </li>
       {#if JSON.parse(user).type === 'teacher'}
         <li class="hover:text-white hover:font-bold">
           <a href="/lectures">Tárgyaim</a>
         </li>
         <li class="hover:text-white hover:font-bold">
           <a href="/lectures">Meghírdetés</a>
+        </li>
+      {:else}
+        <li class="hover:text-white hover:font-bold">
+          <a href="/home">Tárgyaim</a>
+        </li>
+        <li class="hover:text-white hover:font-bold">
+          <a href="/enroll">Tárgy felvétele</a>
+        </li>
+        <li class="hover:text-white hover:font-bold">
+          <a href="/todo">Feladatok listája</a>
+        </li>
+        <li class="hover:text-white hover:font-bold">
+          <form action="/logout" method="POST">
+            <button>Kilépés</button>
+          </form>
+        </li>
+        <li class="hover:text-white hover:font-bold">
+          <a href="/profile">
+            {JSON.parse(user).lastName} {JSON.parse(user).firstName}
+          </a>
         </li>
       {/if}
     {/if}

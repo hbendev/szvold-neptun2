@@ -79,6 +79,11 @@
             text-grey-600 border-b border-gray-400">
             Tanár
           </th>
+          <th
+            class="py-4 px-6 bg-gray-100 font-bold uppercase text-sm
+            text-grey-600 border-b border-gray-400">
+            Funkciók
+          </th>
         </tr>
       </thead>
       <tbody>
@@ -94,6 +99,14 @@
             <td class="py-4 px-6 border-b border-gray-400">{subject.credit}</td>
             <td class="py-4 px-6 border-b border-gray-400">
               {subject.creator.lastName} {subject.creator.firstName}
+            </td>
+            <td class="py-4 px-6 border-b border-gray-400">
+              <button
+                on:click={() => changePublish(subject.id)}
+                class="text-gray-200 font-bold py-1 px-3 rounded text-xs
+                bg-red-400 hover:bg-red-600">
+                Lead
+              </button>
             </td>
           </tr>
         {/each}
