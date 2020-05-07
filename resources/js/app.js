@@ -6,8 +6,8 @@
 
 require("./bootstrap");
 
-import App from "./components/App.svelte";
+import Home from "./components/Home.svelte";
 import Header from "./components/Header.svelte";
 
-customElements.define("app-component", App);
+customElements.define("home-page", Home);
 customElements.define("header-component", Header);

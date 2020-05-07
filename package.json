@@ -27,6 +27,6 @@
     },
     "dependencies": {
         "svelte-preprocess": "^3.7.4",
-        "tailwindcss": "^1.2.0"
+        "tailwindcss": "^1.4.0"
     }
 }

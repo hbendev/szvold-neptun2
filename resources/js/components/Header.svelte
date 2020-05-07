@@ -12,6 +12,9 @@
     <li class="hover:text-white hover:font-bold">
       <a href="/">Neptun 2</a>
     </li>
+    <li class="hover:text-white hover:font-bold">
+      <a href="/contact">Kapcsolat</a>
+    </li>
     {#if !user}
       <li class="hover:text-white hover:font-bold">
         <a href="/login">Login</a>
