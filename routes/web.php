@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 
@@ -31,8 +30,13 @@ Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/profile', function () {
+    return view('profile');
+})->middleware('auth')->name('profile');
+
+Route::get('/home', 'HomeController@index')->middleware('auth')->name('home');
 
 Route::get('/users', 'Users@getUsers');
 Route::get('/studentCount', 'Users@getStudentCount');
 Route::get('/teacherCount', 'Users@getTeacherCount');
+Route::get('/subjectsCreatedBy', 'Subjects@getSubjectsCreatedByTeacher');

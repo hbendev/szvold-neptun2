@@ -12,7 +12,7 @@ class Subject extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'credit', 'description'
+        'name', 'credit', 'description', 'name', 'identifier'
     ];
 
     /**
@@ -21,7 +21,11 @@ class Subject extends Model
      * @var array
      */
     protected $hidden = [
-        'identifier', 'name', 'creator_id'
+        'creator_id'
+    ];
+
+    protected $casts = [
+        'isPublished' => 'boolean',
     ];
 
     public function creator()

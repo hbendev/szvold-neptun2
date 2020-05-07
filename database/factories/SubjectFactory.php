@@ -22,6 +22,7 @@ $factory->define(Subject::class, function (Faker $faker) {
         'name' => $faker->unique()->word,
         'description' => $faker->sentence,
         'credit' => $faker->randomDigitNotNull,
-        'identifier' => "IK-" . $faker->unique()->regexify('[A-Z]{3}') . $faker->randomNumber(3)
+        'identifier' => "IK-" . $faker->unique()->regexify('[A-Z]{3}') . $faker->randomNumber(3),
+        'isPublished' => rand(0,1) < 0.7
     ];
 });

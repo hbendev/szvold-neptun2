@@ -20,6 +20,7 @@ class CreateSubjectsTable extends Migration
             $table->string('description')->nullable();
             $table->string('identifier', 9)->unique(); /* kötelező, IK-SSSNNN formájú, ahol S az angol ábécé valamelyik nagybetűje, N pedig egy szám */
             $table->integer('credit');
+            $table->boolean('isPublished')->default(false);
 
             $table->unsignedBigInteger('creator_id')->nullable();
             $table->foreign('creator_id')->references('id')->on('users');
