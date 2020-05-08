@@ -21437,10 +21437,10 @@ function create_if_block_1(ctx) {
 	return {
 		c() {
 			li0 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("li");
-			li0.innerHTML = `<a href="/lectures">Tárgyaim</a>`;
+			li0.innerHTML = `<a href="/home">Tárgyaim</a>`;
 			t1 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
 			li1 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("li");
-			li1.innerHTML = `<a href="/lectures">Meghírdetés</a>`;
+			li1.innerHTML = `<a href="/announce">Meghírdetés</a>`;
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(li0, "class", "hover:text-white hover:font-bold");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(li1, "class", "hover:text-white hover:font-bold");
 		},
@@ -21462,9 +21462,6 @@ function create_fragment(ctx) {
 	let nav;
 	let ul;
 	let li0;
-	let a0;
-	let t0;
-	let a0_href_value;
 	let t1;
 	let li1;
 	let t3;
@@ -21477,8 +21474,7 @@ function create_fragment(ctx) {
 			nav = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("nav");
 			ul = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("ul");
 			li0 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("li");
-			a0 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("a");
-			t0 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])("Neptun 2");
+			li0.innerHTML = `<a href="/">Neptun 2</a>`;
 			t1 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
 			li1 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("li");
 			li1.innerHTML = `<a href="/contact">Kapcsolat</a>`;
@@ -21487,7 +21483,6 @@ function create_fragment(ctx) {
 			t4 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
 			if (if_block1) if_block1.c();
 			this.c = svelte_internal__WEBPACK_IMPORTED_MODULE_0__["noop"];
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(a0, "href", a0_href_value = /*user*/ ctx[0] ? "/home" : "/");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(li0, "class", "hover:text-white hover:font-bold");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(li1, "class", "hover:text-white hover:font-bold");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(ul, "class", "w-5/6 space-y-2 md:space-y-0 mx-auto md:h-16 flex flex-col\n    md:flex-row justify-between items-center font-medium flex-wrap");
@@ -21497,8 +21492,6 @@ function create_fragment(ctx) {
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["insert"])(target, nav, anchor);
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(nav, ul);
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(ul, li0);
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(li0, a0);
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(a0, t0);
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(ul, t1);
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(ul, li1);
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(ul, t3);
@@ -21507,10 +21500,6 @@ function create_fragment(ctx) {
 			if (if_block1) if_block1.m(ul, null);
 		},
 		p(ctx, [dirty]) {
-			if (dirty & /*user*/ 1 && a0_href_value !== (a0_href_value = /*user*/ ctx[0] ? "/home" : "/")) {
-				Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(a0, "href", a0_href_value);
-			}
-
 			if (!/*user*/ ctx[0]) {
 				if (!if_block0) {
 					if_block0 = create_if_block_2(ctx);
@@ -22387,7 +22376,7 @@ function get_each_context(ctx, list, i) {
 	return child_ctx;
 }
 
-// (96:14) {:else}
+// (98:14) {:else}
 function create_else_block(ctx) {
 	let button;
 	let dispose;
@@ -22417,7 +22406,7 @@ function create_else_block(ctx) {
 	};
 }
 
-// (89:14) {#if !subject.isPublished}
+// (91:14) {#if !subject.isPublished}
 function create_if_block(ctx) {
 	let button;
 	let dispose;
@@ -22447,7 +22436,7 @@ function create_if_block(ctx) {
 	};
 }
 
-// (78:8) {#each subjects as subject}
+// (80:8) {#each subjects as subject}
 function create_each_block(ctx) {
 	let tr;
 	let td0;
@@ -22555,7 +22544,7 @@ function create_each_block(ctx) {
 
 function create_fragment(ctx) {
 	let section;
-	let button;
+	let a;
 	let t1;
 	let div;
 	let table;
@@ -22572,8 +22561,13 @@ function create_fragment(ctx) {
 	return {
 		c() {
 			section = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("section");
-			button = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("button");
-			button.textContent = "Új tárgy +";
+			a = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("a");
+
+			a.innerHTML = `<button class="font-bold py-2 px-4 rounded text-lg bg-green-400 hover:bg-green-600
+      text-white ">
+      Új tárgy meghírdetése +
+    </button>`;
+
 			t1 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
 			div = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("div");
 			table = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("table");
@@ -22608,14 +22602,14 @@ function create_fragment(ctx) {
 			}
 
 			this.c = svelte_internal__WEBPACK_IMPORTED_MODULE_0__["noop"];
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(button, "class", "font-bold py-2 px-4 rounded text-lg bg-green-400 hover:bg-green-600\n    text-white ");
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(a, "href", "/announce");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(table, "class", "text-left w-full border-collapse");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(div, "class", "bg-white shadow-md rounded my-6");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(section, "class", "container mx-auto overflow-x-visible");
 		},
 		m(target, anchor) {
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["insert"])(target, section, anchor);
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(section, button);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(section, a);
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(section, t1);
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(section, div);
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(div, table);

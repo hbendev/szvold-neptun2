@@ -27,7 +27,7 @@ class Users extends Controller
 
     public function getStudentCount()
     {
-        $count = User::where("type","student");
+        $count = User::where("type","student")->count();
 
         return $count;
     }

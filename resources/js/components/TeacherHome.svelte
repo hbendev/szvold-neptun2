@@ -37,11 +37,13 @@
 </style>
 
 <section class="container mx-auto overflow-x-visible">
-  <button
-    class="font-bold py-2 px-4 rounded text-lg bg-green-400 hover:bg-green-600
-    text-white ">
-    Új tárgy +
-  </button>
+  <a href="/announce">
+    <button
+      class="font-bold py-2 px-4 rounded text-lg bg-green-400 hover:bg-green-600
+      text-white ">
+      Új tárgy meghírdetése +
+    </button>
+  </a>
   <div class="bg-white shadow-md rounded my-6">
     <table class="text-left w-full border-collapse">
       <!--Border collapse doesn't work on this site yet but it's available in newer tailwind versions -->

@@ -11,7 +11,7 @@
     class="w-5/6 space-y-2 md:space-y-0 mx-auto md:h-16 flex flex-col
     md:flex-row justify-between items-center font-medium flex-wrap">
     <li class="hover:text-white hover:font-bold">
-      <a href={user ? '/home' : '/'}>Neptun 2</a>
+      <a href="/">Neptun 2</a>
     </li>
     <li class="hover:text-white hover:font-bold">
       <a href="/contact">Kapcsolat</a>
@@ -27,10 +27,10 @@
     {#if user}
       {#if JSON.parse(user).type === 'teacher'}
         <li class="hover:text-white hover:font-bold">
-          <a href="/lectures">Tárgyaim</a>
+          <a href="/home">Tárgyaim</a>
         </li>
         <li class="hover:text-white hover:font-bold">
-          <a href="/lectures">Meghírdetés</a>
+          <a href="/announce">Meghírdetés</a>
         </li>
       {:else}
         <li class="hover:text-white hover:font-bold">
