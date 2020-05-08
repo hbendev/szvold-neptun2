@@ -3,7 +3,7 @@
 </script>
 
 <style>
-  @import "css/app.css";
+  @import "/css/app.css";
 </style>
 
 <nav class="bg-blue-400 text-gray-200 w-full">
@@ -30,7 +30,7 @@
           <a href="/home">Tárgyaim</a>
         </li>
         <li class="hover:text-white hover:font-bold">
-          <a href="/announce">Meghírdetés</a>
+          <a href="/subjects/create">Meghírdetés</a>
         </li>
       {:else}
         <li class="hover:text-white hover:font-bold">
@@ -43,16 +43,16 @@
           <a href="/todo">Feladatok listája</a>
         </li>
         <li class="hover:text-white hover:font-bold">
-          <form action="/logout" method="POST">
-            <button>Kilépés</button>
-          </form>
-        </li>
-        <li class="hover:text-white hover:font-bold">
           <a href="/profile">
             {JSON.parse(user).lastName} {JSON.parse(user).firstName}
           </a>
         </li>
       {/if}
+      <li class="hover:text-white hover:font-bold">
+        <form action="/logout" method="POST">
+          <button>Kilépés</button>
+        </form>
+      </li>
     {/if}
 
   </ul>

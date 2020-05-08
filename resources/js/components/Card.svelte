@@ -6,7 +6,7 @@
 </script>
 
 <style>
-  @import "css/app.css";
+  @import "/css/app.css";
 </style>
 
 <svelte:options tag="card-component" />

@@ -1,5 +1,5 @@
 <style>
-  @import "css/app.css";
+  @import "/css/app.css";
 </style>
 
 <!-- TODO: ultra-hack this  -->

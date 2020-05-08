@@ -38,6 +38,10 @@ Route::get('/enroll', function () {
     return view('enroll');
 })->middleware('auth')->name('enroll');
 
+Route::get('/subjects/create', function () {
+    return view('announce');
+})->middleware('auth');
+
 Route::get('/home', 'HomeController@index')->middleware('auth')->name('home');
 
 Route::get('/users', 'Users@getUsers');
@@ -49,3 +53,4 @@ Route::get('/studentSubjects/{student}', 'Subjects@studentSubjects');
 Route::get('/studentNotEnrolled', 'Subjects@studentNotEnrolled');
 Route::post('/abandonSubject/{subject}', 'Users@abandonSubject');
 Route::post('/enrollSubject/{subject}', 'Users@enrollSubject');
+Route::post('/subjects/create', 'Subjects@announce')->name('announce');

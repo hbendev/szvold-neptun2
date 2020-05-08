@@ -33,7 +33,7 @@
 </script>
 
 <style>
-  @import "css/app.css";
+  @import "/css/app.css";
 </style>
 
 <section class="container mx-auto overflow-x-visible">
@@ -103,11 +103,13 @@
                   Publikálás visszavonása
                 </button>
               {/if}
-              <button
-                class="text-gray-200 font-bold py-1 px-3 rounded text-xs
-                bg-blue-400 hover:bg-blue-600">
-                Szerkesztés
-              </button>
+              <a href={`/subjects/${subject.id}`}>
+                <button
+                  class="text-gray-200 font-bold py-1 px-3 rounded text-xs
+                  bg-blue-400 hover:bg-blue-600">
+                  Szerkesztés
+                </button>
+              </a>
             </td>
           </tr>
         {/each}

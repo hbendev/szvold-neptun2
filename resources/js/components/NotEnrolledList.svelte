@@ -31,7 +31,7 @@
 </script>
 
 <style>
-  @import "css/app.css";
+  @import "/css/app.css";
 </style>
 
 <section class="container mx-auto overflow-x-visible">

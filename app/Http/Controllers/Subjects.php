@@ -7,9 +7,48 @@ use App\Subject;
 use Gate;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+
 
 class Subjects extends Controller
 {
+    /**
+     * Create a new user instance after a valid registration.
+     *
+     * @param  array  $data
+     * @return \App\User
+     */
+    protected function create($data)
+    {
+        return Subject::create([
+            'name' => $data['name'],
+            'description' => $data['description'],
+            'credit' => $data['credit'],
+            'identifier' => $data['identifier'],
+            'creator' => Auth::user()->id
+        ]);
+    }
+
+    protected function announce(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => ['required', 'unique:subjects', 'string', 'min:3', 'max:55'],
+            'description' => ['max:500'],
+            'credit' => ['required', 'integer'],
+            'identifier' => ['required', 'string', 'size:9', 'unique:subjects', 'regex:/IK-[A-Z][A-Z][A-Z]\d\d\d/'],
+        ]);
+
+        $subject = new Subject;
+        $subject->name = $request->name;
+        $subject->description = $request->description;
+        $subject->credit = $request->credit;
+        $subject->identifier = $request->identifier;
+        $subject->creator()->associate(Auth::user()->id);
+        $subject->save();
+
+        return redirect('home');
+    }
 
     public function subjectsCreatedByTeacher()
     {
@@ -29,7 +68,7 @@ class Subjects extends Controller
 
     public function studentNotEnrolled()
     {
-        $subjects = Subject::whereDoesntHave('students', function (Builder $query) {
+        $subjects = Subject::where('isPublished', true)->whereDoesntHave('students', function (Builder $query) {
             $query->where('student_id', Auth::user()->id);
         })->with('creator')->get();
 

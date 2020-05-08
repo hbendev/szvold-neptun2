@@ -1,5 +1,8 @@
 module.exports = {
     theme: {
+        minHeight: {
+            "32": "8rem"
+        },
         extend: {}
     },
     variants: {
