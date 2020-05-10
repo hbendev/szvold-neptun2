@@ -100,7 +100,7 @@
                 bg-red-400 hover:bg-red-600">
                 Lead
               </button>
-              <a href={`/subject/${subject.id}`}>
+              <a href={`/subjects/${subject.id}`}>
                 <button
                   class="text-gray-200 font-bold py-1 px-3 rounded text-xs
                   bg-blue-400 hover:bg-blue-600">

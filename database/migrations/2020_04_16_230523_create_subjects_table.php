@@ -16,6 +16,8 @@ class CreateSubjectsTable extends Migration
         Schema::create('subjects', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->softDeletes();
+
             $table->string('name')->unique();
             $table->string('description')->nullable();
             $table->string('identifier', 9)->unique(); /* kötelező, IK-SSSNNN formájú, ahol S az angol ábécé valamelyik nagybetűje, N pedig egy szám */

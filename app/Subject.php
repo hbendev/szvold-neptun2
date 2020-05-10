@@ -3,9 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Subject extends Model
 {
+
+    use SoftDeletes;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -34,6 +38,6 @@ class Subject extends Model
 
     public function students()
     {
-        return $this->belongsToMany('App\Subject', 'student_subject', 'subject_id', 'student_id' );
+        return $this->belongsToMany('App\User', 'student_subject', 'subject_id', 'student_id' );
     }
 }

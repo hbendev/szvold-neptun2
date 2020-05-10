@@ -43,6 +43,11 @@ Route::get('/subjects/create', function () {
 })->middleware('auth');
 Route::post('subjects/create', 'Subjects@announce')->name('announce');
 
+Route::get('/subjects/{subject}', function ($subject) {
+    return view('subject')->with('subject', $subject);
+})->middleware('auth');
+
+
 Route::get('/home', 'HomeController@index')->middleware('auth')->name('home');
 
 Route::get('/api/users', 'Users@getUsers');
@@ -54,3 +59,5 @@ Route::get('/api/studentSubjects/{student}', 'Subjects@studentSubjects');
 Route::get('/api/studentNotEnrolled', 'Subjects@studentNotEnrolled');
 Route::post('/api/abandonSubject/{subject}', 'Users@abandonSubject');
 Route::post('/api/enrollSubject/{subject}', 'Users@enrollSubject');
+Route::get('/api/subjects/{subject}', 'Subjects@getSubject');
+Route::post('/api/subjects/{subject}/delete', 'Subjects@deleteSubject');

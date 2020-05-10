@@ -8,6 +8,7 @@ use Gate;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 
 
@@ -50,6 +51,12 @@ class Subjects extends Controller
         return redirect('home');
     }
 
+    public function getSubject($subjectId){
+        $subject = Subject::with(['students', 'creator'])->find($subjectId);
+
+        return response()->json($subject);
+    }
+
     public function subjectsCreatedByTeacher()
     {
         $subjects = Subject::where('creator_id', Auth::user()->id)->get();
@@ -83,5 +90,15 @@ class Subjects extends Controller
 
         $subject->save();
         return response()->json($subject);
+    }
+
+    public function deleteSubject($subjectId){
+        $subject = Subject::find($subjectId);
+
+        Gate::authorize('update-subject', $subject);
+        $subject->delete();
+        $subject->save();
+
+        return redirect('home');
     }
 }

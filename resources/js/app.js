@@ -10,6 +10,9 @@ import Welcome from "./components/Welcome.svelte";
 import Home from "./components/Home.svelte";
 import TeacherHome from "./components/TeacherHome.svelte";
 import StudentHome from "./components/StudentHome.svelte";
+import Subject from "./components/Subject.svelte";
+import SubjectInfo from "./components/SubjectInfo.svelte";
+import StudentSubject from "./components/StudentSubject.svelte";
 import NotEnrolledList from "./components/NotEnrolledList.svelte";
 import Header from "./components/Header.svelte";
 
@@ -17,5 +20,8 @@ customElements.define("welcome-page", Welcome);
 customElements.define("home-page", Home);
 customElements.define("teacher-home", TeacherHome);
 customElements.define("student-home", StudentHome);
+customElements.define("subject-page", Subject);
+customElements.define("subject-info", SubjectInfo);
+customElements.define("student-subject", StudentSubject);
 customElements.define("enroll-page", NotEnrolledList);
 customElements.define("header-component", Header);
