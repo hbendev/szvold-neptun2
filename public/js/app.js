@@ -23232,7 +23232,7 @@ function create_fragment(ctx) {
 			}
 
 			this.c = svelte_internal__WEBPACK_IMPORTED_MODULE_0__["noop"];
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(a, "href", "/announce");
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(a, "href", "/subjects/create");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(table, "class", "text-left w-full border-collapse");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(div, "class", "bg-white shadow-md rounded my-6");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(section, "class", "container mx-auto overflow-x-visible");

@@ -37,7 +37,7 @@
 </style>
 
 <section class="container mx-auto overflow-x-visible">
-  <a href="/announce">
+  <a href="/subjects/create">
     <button
       class="font-bold py-2 px-4 rounded text-lg bg-green-400 hover:bg-green-600
       text-white ">
