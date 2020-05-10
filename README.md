@@ -1,7 +1,7 @@
 Hajnal Bendegúz
 ESIAHA
 SZERVEROLDALI WEBPROGRAMOZÁS - OKTATÁSI RENDSZER
-2020.xx.yy
+2020.05.10.
 Ezt a megoldást Hajnal Bendegúz, ESIAHA küldte be és készítette a SZERVEROLDALI WEBPROGRAMOZÁS kurzus OKTATÁSI RENDSZER feladatához.
 Kijelentem, hogy ez a megoldás a saját munkám.
 Nem másoltam vagy használtam harmadik féltől származó megoldásokat.
