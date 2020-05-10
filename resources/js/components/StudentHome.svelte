@@ -6,7 +6,7 @@
       .querySelector('meta[name="csrf-token"]')
       .getAttribute("content");
     try {
-      const result = await fetch(`/abandonSubject/${id}`, {
+      const result = await fetch(`/api/abandonSubject/${id}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -30,7 +30,7 @@
 
   onMount(() => {
     setTimeout(async () => {
-      subjects = await fetch(`/studentSubjects/${userid}`).then(data =>
+      subjects = await fetch(`/api/studentSubjects/${userid}`).then(data =>
         data.json()
       );
     }, 0);

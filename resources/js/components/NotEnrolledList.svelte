@@ -6,7 +6,7 @@
       .querySelector('meta[name="csrf-token"]')
       .getAttribute("content");
     try {
-      const result = await fetch(`/enrollSubject/${id}`, {
+      const result = await fetch(`/api/enrollSubject/${id}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -26,7 +26,7 @@
   let subjects = [];
 
   onMount(async () => {
-    subjects = await fetch("/studentNotEnrolled").then(data => data.json());
+    subjects = await fetch("/api/studentNotEnrolled").then(data => data.json());
   });
 </script>
 

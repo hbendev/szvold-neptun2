@@ -4,8 +4,8 @@
   let teacherCount = undefined;
   let studentCount = undefined;
   onMount(async function() {
-    teacherCount = await fetch("/teacherCount").then(count => count.text());
-    studentCount = await fetch("/studentCount").then(count => count.text());
+    teacherCount = await fetch("/api/teacherCount").then(count => count.text());
+    studentCount = await fetch("/api/studentCount").then(count => count.text());
   });
 </script>
 

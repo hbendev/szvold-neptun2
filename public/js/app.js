@@ -21974,7 +21974,7 @@ function instance($$self, $$props, $$invalidate) {
 		let token = document.querySelector("meta[name=\"csrf-token\"]").getAttribute("content");
 
 		try {
-			const result = await fetch(`/enrollSubject/${id}`, {
+			const result = await fetch(`/api/enrollSubject/${id}`, {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
@@ -21994,7 +21994,7 @@ function instance($$self, $$props, $$invalidate) {
 	let subjects = [];
 
 	Object(svelte__WEBPACK_IMPORTED_MODULE_1__["onMount"])(async () => {
-		$$invalidate(0, subjects = await fetch("/studentNotEnrolled").then(data => data.json()));
+		$$invalidate(0, subjects = await fetch("/api/studentNotEnrolled").then(data => data.json()));
 	});
 
 	const click_handler = subject => enroll(subject.id);
@@ -22275,7 +22275,7 @@ function instance($$self, $$props, $$invalidate) {
 		let token = document.querySelector("meta[name=\"csrf-token\"]").getAttribute("content");
 
 		try {
-			const result = await fetch(`/abandonSubject/${id}`, {
+			const result = await fetch(`/api/abandonSubject/${id}`, {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
@@ -22299,7 +22299,7 @@ function instance($$self, $$props, $$invalidate) {
 	Object(svelte__WEBPACK_IMPORTED_MODULE_1__["onMount"])(() => {
 		setTimeout(
 			async () => {
-				$$invalidate(0, subjects = await fetch(`/studentSubjects/${userid}`).then(data => data.json()));
+				$$invalidate(0, subjects = await fetch(`/api/studentSubjects/${userid}`).then(data => data.json()));
 			},
 			0
 		);
@@ -22665,7 +22665,7 @@ function instance($$self, $$props, $$invalidate) {
 		let token = document.querySelector("meta[name=\"csrf-token\"]").getAttribute("content");
 
 		try {
-			const result = await fetch(`/changeSubjectPublish/${id}`, {
+			const result = await fetch(`/api/changeSubjectPublish/${id}`, {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
@@ -22685,7 +22685,7 @@ function instance($$self, $$props, $$invalidate) {
 	let subjects = [];
 
 	Object(svelte__WEBPACK_IMPORTED_MODULE_1__["onMount"])(async () => {
-		$$invalidate(0, subjects = await fetch("/subjectsCreatedBy").then(data => data.json()));
+		$$invalidate(0, subjects = await fetch("/api/subjectsCreatedBy").then(data => data.json()));
 	});
 
 	const click_handler = subject => changePublish(subject.id);
@@ -22825,8 +22825,8 @@ function instance($$self, $$props, $$invalidate) {
 	let studentCount = undefined;
 
 	Object(svelte__WEBPACK_IMPORTED_MODULE_2__["onMount"])(async function () {
-		$$invalidate(0, teacherCount = await fetch("/teacherCount").then(count => count.text()));
-		$$invalidate(1, studentCount = await fetch("/studentCount").then(count => count.text()));
+		$$invalidate(0, teacherCount = await fetch("/api/teacherCount").then(count => count.text()));
+		$$invalidate(1, studentCount = await fetch("/api/studentCount").then(count => count.text()));
 	});
 
 	return [teacherCount, studentCount];

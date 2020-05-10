@@ -41,16 +41,16 @@ Route::get('/enroll', function () {
 Route::get('/subjects/create', function () {
     return view('announce');
 })->middleware('auth');
+Route::post('subjects/create', 'Subjects@announce')->name('announce');
 
 Route::get('/home', 'HomeController@index')->middleware('auth')->name('home');
 
-Route::get('/users', 'Users@getUsers');
-Route::get('/studentCount', 'Users@getStudentCount');
-Route::get('/teacherCount', 'Users@getTeacherCount');
-Route::get('/subjectsCreatedBy', 'Subjects@subjectsCreatedByTeacher');
-Route::post('/changeSubjectPublish/{subject}', 'Subjects@changeSubjectPublish');
-Route::get('/studentSubjects/{student}', 'Subjects@studentSubjects');
-Route::get('/studentNotEnrolled', 'Subjects@studentNotEnrolled');
-Route::post('/abandonSubject/{subject}', 'Users@abandonSubject');
-Route::post('/enrollSubject/{subject}', 'Users@enrollSubject');
-Route::post('/subjects/create', 'Subjects@announce')->name('announce');
+Route::get('/api/users', 'Users@getUsers');
+Route::get('/api/studentCount', 'Users@getStudentCount');
+Route::get('/api/teacherCount', 'Users@getTeacherCount');
+Route::get('/api/subjectsCreatedBy', 'Subjects@subjectsCreatedByTeacher');
+Route::post('/api/changeSubjectPublish/{subject}', 'Subjects@changeSubjectPublish');
+Route::get('/api/studentSubjects/{student}', 'Subjects@studentSubjects');
+Route::get('/api/studentNotEnrolled', 'Subjects@studentNotEnrolled');
+Route::post('/api/abandonSubject/{subject}', 'Users@abandonSubject');
+Route::post('/api/enrollSubject/{subject}', 'Users@enrollSubject');
