@@ -22426,7 +22426,7 @@ function create_else_block(ctx) {
 		c() {
 			subject_info = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("subject-info");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["set_custom_element_data"])(subject_info, "userid", /*userid*/ ctx[0]);
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["set_custom_element_data"])(subject_info, "subject", /*subject*/ ctx[2]);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["set_custom_element_data"])(subject_info, "subject", /*subject*/ ctx[3]);
 		},
 		m(target, anchor) {
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["insert"])(target, subject_info, anchor);
@@ -22436,8 +22436,8 @@ function create_else_block(ctx) {
 				Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["set_custom_element_data"])(subject_info, "userid", /*userid*/ ctx[0]);
 			}
 
-			if (dirty & /*subject*/ 4) {
-				Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["set_custom_element_data"])(subject_info, "subject", /*subject*/ ctx[2]);
+			if (dirty & /*subject*/ 8) {
+				Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["set_custom_element_data"])(subject_info, "subject", /*subject*/ ctx[3]);
 			}
 		},
 		d(detaching) {
@@ -22449,7 +22449,9 @@ function create_else_block(ctx) {
 // (43:0) {#if usertype === 'teacher'}
 function create_if_block(ctx) {
 	let div;
+	let a;
 	let button0;
+	let a_href_value;
 	let t1;
 	let button1;
 	let t3;
@@ -22459,6 +22461,7 @@ function create_if_block(ctx) {
 	return {
 		c() {
 			div = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("div");
+			a = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("a");
 			button0 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("button");
 			button0.textContent = "Szerkesztés";
 			t1 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
@@ -22466,29 +22469,35 @@ function create_if_block(ctx) {
 			button1.textContent = "Törlés";
 			t3 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
 			subject_info = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("subject-info");
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(button0, "class", "font-bold py-2 px-4 rounded text-lg bg-blue-400 hover:bg-blue-600\n      text-white ");
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(button0, "class", "font-bold py-2 px-4 rounded text-lg bg-blue-400 hover:bg-blue-600\n        text-white ");
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(a, "href", a_href_value = `/subjects/${/*subjectid*/ ctx[2]}/edit`);
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(button1, "class", "font-bold py-2 px-4 rounded text-lg bg-red-400 hover:bg-red-600\n      text-white ");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(div, "class", "flex justify-between container mx-auto");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["set_custom_element_data"])(subject_info, "userid", /*userid*/ ctx[0]);
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["set_custom_element_data"])(subject_info, "subject", /*subject*/ ctx[2]);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["set_custom_element_data"])(subject_info, "subject", /*subject*/ ctx[3]);
 		},
 		m(target, anchor, remount) {
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["insert"])(target, div, anchor);
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(div, button0);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(div, a);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(a, button0);
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(div, t1);
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(div, button1);
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["insert"])(target, t3, anchor);
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["insert"])(target, subject_info, anchor);
 			if (remount) dispose();
-			dispose = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["listen"])(button1, "click", /*handleDelete*/ ctx[3]);
+			dispose = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["listen"])(button1, "click", /*handleDelete*/ ctx[4]);
 		},
 		p(ctx, dirty) {
+			if (dirty & /*subjectid*/ 4 && a_href_value !== (a_href_value = `/subjects/${/*subjectid*/ ctx[2]}/edit`)) {
+				Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(a, "href", a_href_value);
+			}
+
 			if (dirty & /*userid*/ 1) {
 				Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["set_custom_element_data"])(subject_info, "userid", /*userid*/ ctx[0]);
 			}
 
-			if (dirty & /*subject*/ 4) {
-				Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["set_custom_element_data"])(subject_info, "subject", /*subject*/ ctx[2]);
+			if (dirty & /*subject*/ 8) {
+				Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["set_custom_element_data"])(subject_info, "subject", /*subject*/ ctx[3]);
 			}
 		},
 		d(detaching) {
@@ -22573,7 +22582,7 @@ function instance($$self, $$props, $$invalidate) {
 	Object(svelte__WEBPACK_IMPORTED_MODULE_1__["onMount"])(() => {
 		setTimeout(
 			async () => {
-				$$invalidate(2, subject = await fetch(`/api/subjects/${subjectid}`).then(data => data.json()));
+				$$invalidate(3, subject = await fetch(`/api/subjects/${subjectid}`).then(data => data.json()));
 			},
 			0
 		);
@@ -22582,17 +22591,17 @@ function instance($$self, $$props, $$invalidate) {
 	$$self.$set = $$props => {
 		if ("userid" in $$props) $$invalidate(0, userid = $$props.userid);
 		if ("usertype" in $$props) $$invalidate(1, usertype = $$props.usertype);
-		if ("subjectid" in $$props) $$invalidate(4, subjectid = $$props.subjectid);
+		if ("subjectid" in $$props) $$invalidate(2, subjectid = $$props.subjectid);
 	};
 
-	return [userid, usertype, subject, handleDelete, subjectid];
+	return [userid, usertype, subjectid, subject, handleDelete];
 }
 
 class Subject extends svelte_internal__WEBPACK_IMPORTED_MODULE_0__["SvelteElement"] {
 	constructor(options) {
 		super();
 		this.shadowRoot.innerHTML = `<style>@import "/css/app.css";</style>`;
-		Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["init"])(this, { target: this.shadowRoot }, instance, create_fragment, svelte_internal__WEBPACK_IMPORTED_MODULE_0__["safe_not_equal"], { userid: 0, usertype: 1, subjectid: 4 });
+		Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["init"])(this, { target: this.shadowRoot }, instance, create_fragment, svelte_internal__WEBPACK_IMPORTED_MODULE_0__["safe_not_equal"], { userid: 0, usertype: 1, subjectid: 2 });
 
 		if (options) {
 			if (options.target) {
@@ -22629,7 +22638,7 @@ class Subject extends svelte_internal__WEBPACK_IMPORTED_MODULE_0__["SvelteElemen
 	}
 
 	get subjectid() {
-		return this.$$.ctx[4];
+		return this.$$.ctx[2];
 	}
 
 	set subjectid(subjectid) {
@@ -23102,7 +23111,7 @@ function create_each_block(ctx) {
 			t8 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
 			a = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("a");
 			button = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("button");
-			button.textContent = "Szerkesztés";
+			button.textContent = "Részletek";
 			t10 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(td0, "class", "py-4 px-6 border-b border-gray-400");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(td1, "class", "py-4 px-6 border-b border-gray-400");

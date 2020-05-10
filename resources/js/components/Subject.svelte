@@ -42,17 +42,20 @@
 
 {#if usertype === 'teacher'}
   <div class="flex justify-between container mx-auto">
-    <button
-      class="font-bold py-2 px-4 rounded text-lg bg-blue-400 hover:bg-blue-600
-      text-white ">
-      Szerkesztés
-    </button>
+    <a href={`/subjects/${subjectid}/edit`}>
+      <button
+        class="font-bold py-2 px-4 rounded text-lg bg-blue-400 hover:bg-blue-600
+        text-white ">
+        Szerkesztés
+      </button>
+    </a>
     <button
       on:click={handleDelete}
       class="font-bold py-2 px-4 rounded text-lg bg-red-400 hover:bg-red-600
       text-white ">
       Törlés
     </button>
+
   </div>
   <subject-info {userid} {subject} />
 {:else}

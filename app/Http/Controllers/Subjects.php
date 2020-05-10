@@ -51,6 +51,27 @@ class Subjects extends Controller
         return redirect('home');
     }
 
+    protected function update(Request $request, $subjectId)
+    {
+        $subject = Subject::find($subjectId);
+        Gate::authorize('update-subject', $subject);
+
+        $validated = $request->validate([
+            'name' => ['required', 'unique:subjects,name,' . $subjectId, 'string', 'min:3', 'max:55'],
+            'description' => ['max:500'],
+            'credit' => ['required', 'integer'],
+            'identifier' => ['required', 'string', 'size:9', 'unique:subjects,identifier,' . $subjectId, 'regex:/IK-[A-Z][A-Z][A-Z]\d\d\d/'],
+        ]);
+
+        $subject->name = $request->name;
+        $subject->description = $request->description;
+        $subject->credit = $request->credit;
+        $subject->identifier = $request->identifier;
+        $subject->save();
+
+        return redirect('home');
+    }
+
     public function getSubject($subjectId){
         $subject = Subject::with(['students', 'creator'])->find($subjectId);
 

@@ -1,5 +1,6 @@
 <?php
 
+use App\Subject;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
@@ -46,6 +47,15 @@ Route::post('subjects/create', 'Subjects@announce')->name('announce');
 Route::get('/subjects/{subject}', function ($subject) {
     return view('subject')->with('subject', $subject);
 })->middleware('auth');
+
+Route::get('/subjects/{subjectId}/edit', function ($subjectId) {
+    $subject = Subject::findOrFail($subjectId);
+    Gate::authorize('update-subject', $subject);
+
+    return view('subjectedit')->with('subject', $subject);
+})->middleware('auth');
+Route::post('/subjects/{subjectId}/edit', 'Subjects@update')->name('update-subject');
+
 
 
 Route::get('/home', 'HomeController@index')->middleware('auth')->name('home');
