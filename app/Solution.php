@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Subject extends Model
+class Solution extends Model
 {
     use SoftDeletes;
 
@@ -15,7 +15,6 @@ class Subject extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'credit', 'description', 'name', 'identifier', 'creator_id'
     ];
 
     /**
@@ -27,16 +26,15 @@ class Subject extends Model
     ];
 
     protected $casts = [
-        'isPublished' => 'boolean',
     ];
 
-    public function creator()
+    public function task()
     {
-        return $this->belongsTo('App\User', 'creator_id');
+        return $this->belongsTo('App\Solution', 'subject_id');
     }
 
-    public function students()
+    public function teacher()
     {
-        return $this->belongsToMany('App\User', 'student_subject', 'subject_id', 'student_id' );
+        return $this->belongsTo('App\Solution', 'user_id');
     }
 }
