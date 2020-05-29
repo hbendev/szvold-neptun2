@@ -22449,47 +22449,64 @@ function create_else_block(ctx) {
 // (43:0) {#if usertype === 'teacher'}
 function create_if_block(ctx) {
 	let div;
-	let a;
+	let a0;
 	let button0;
-	let a_href_value;
+	let a0_href_value;
 	let t1;
+	let a1;
 	let button1;
+	let a1_href_value;
 	let t3;
+	let button2;
+	let t5;
 	let subject_info;
 	let dispose;
 
 	return {
 		c() {
 			div = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("div");
-			a = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("a");
+			a0 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("a");
 			button0 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("button");
 			button0.textContent = "Szerkesztés";
 			t1 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
+			a1 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("a");
 			button1 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("button");
-			button1.textContent = "Törlés";
+			button1.textContent = "Új feladat";
 			t3 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
+			button2 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("button");
+			button2.textContent = "Törlés";
+			t5 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
 			subject_info = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("subject-info");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(button0, "class", "font-bold py-2 px-4 rounded text-lg bg-blue-400 hover:bg-blue-600\n        text-white ");
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(a, "href", a_href_value = `/subjects/${/*subjectid*/ ctx[2]}/edit`);
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(button1, "class", "font-bold py-2 px-4 rounded text-lg bg-red-400 hover:bg-red-600\n      text-white ");
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(a0, "href", a0_href_value = `/subjects/${/*subjectid*/ ctx[2]}/edit`);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(button1, "class", "font-bold py-2 px-4 rounded text-lg bg-blue-400 hover:bg-blue-600\n        text-white ");
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(a1, "href", a1_href_value = `/subjects/${/*subjectid*/ ctx[2]}/task/create`);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(button2, "class", "font-bold py-2 px-4 rounded text-lg bg-red-400 hover:bg-red-600\n      text-white ");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(div, "class", "flex justify-between container mx-auto");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["set_custom_element_data"])(subject_info, "userid", /*userid*/ ctx[0]);
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["set_custom_element_data"])(subject_info, "subject", /*subject*/ ctx[3]);
 		},
 		m(target, anchor, remount) {
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["insert"])(target, div, anchor);
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(div, a);
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(a, button0);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(div, a0);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(a0, button0);
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(div, t1);
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(div, button1);
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["insert"])(target, t3, anchor);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(div, a1);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(a1, button1);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(div, t3);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(div, button2);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["insert"])(target, t5, anchor);
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["insert"])(target, subject_info, anchor);
 			if (remount) dispose();
-			dispose = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["listen"])(button1, "click", /*handleDelete*/ ctx[4]);
+			dispose = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["listen"])(button2, "click", /*handleDelete*/ ctx[4]);
 		},
 		p(ctx, dirty) {
-			if (dirty & /*subjectid*/ 4 && a_href_value !== (a_href_value = `/subjects/${/*subjectid*/ ctx[2]}/edit`)) {
-				Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(a, "href", a_href_value);
+			if (dirty & /*subjectid*/ 4 && a0_href_value !== (a0_href_value = `/subjects/${/*subjectid*/ ctx[2]}/edit`)) {
+				Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(a0, "href", a0_href_value);
+			}
+
+			if (dirty & /*subjectid*/ 4 && a1_href_value !== (a1_href_value = `/subjects/${/*subjectid*/ ctx[2]}/task/create`)) {
+				Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(a1, "href", a1_href_value);
 			}
 
 			if (dirty & /*userid*/ 1) {
@@ -22502,7 +22519,7 @@ function create_if_block(ctx) {
 		},
 		d(detaching) {
 			if (detaching) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["detach"])(div);
-			if (detaching) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["detach"])(t3);
+			if (detaching) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["detach"])(t5);
 			if (detaching) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["detach"])(subject_info);
 			dispose();
 		}

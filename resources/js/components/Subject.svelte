@@ -49,6 +49,13 @@
         Szerkesztés
       </button>
     </a>
+    <a href={`/subjects/${subjectid}/task/create`}>
+      <button
+        class="font-bold py-2 px-4 rounded text-lg bg-blue-400 hover:bg-blue-600
+        text-white ">
+        Új feladat
+      </button>
+    </a>
     <button
       on:click={handleDelete}
       class="font-bold py-2 px-4 rounded text-lg bg-red-400 hover:bg-red-600

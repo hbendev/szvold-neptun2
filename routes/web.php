@@ -56,6 +56,10 @@ Route::get('/subjects/{subjectId}/edit', function ($subjectId) {
 })->middleware('auth');
 Route::post('/subjects/{subjectId}/edit', 'Subjects@update')->name('update-subject');
 
+Route::get('/subjects/{subjectid}/task/create', function ($id) {
+    return view('taskcreate')->with('id', $id);
+})->middleware('auth');
+Route::post('/subjects/{subjectid}/task/create', 'Tasks@create')->name('taskCreate');
 
 
 Route::get('/home', 'HomeController@index')->middleware('auth')->name('home');
