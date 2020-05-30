@@ -4,6 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Auth;
+
+use App\Solution;
 
 class Subject extends Model
 {
@@ -28,7 +31,13 @@ class Subject extends Model
 
     protected $casts = [
         'isPublished' => 'boolean',
+        'solved' => 'true'
     ];
+
+    public function tasks()
+    {
+        return $this->hasMany('App\Task');
+    }
 
     public function creator()
     {

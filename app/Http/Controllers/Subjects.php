@@ -73,7 +73,7 @@ class Subjects extends Controller
     }
 
     public function getSubject($subjectId){
-        $subject = Subject::with(['students', 'creator'])->find($subjectId);
+        $subject = Subject::with(['students', 'creator', 'tasks'])->find($subjectId);
 
         return response()->json($subject);
     }

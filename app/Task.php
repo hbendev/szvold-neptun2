@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Auth;
 
 class Task extends Model
 {
@@ -17,6 +18,23 @@ class Task extends Model
     protected $fillable = [
     ];
 
+    protected $appends = ['solved', 'solvedCount', 'ratedCount'];
+
+    public function getSolvedAttribute(){
+        if(Auth::user()->type === 'teacher'){
+            return false;
+        }
+        return Solution::where('student', Auth::user()->id)->exists();
+    }
+
+    public function getSolvedCountAttribute(){
+        return Solution::where('subject', $this->attributes['subject_id'])->count();
+    }
+
+    public function getRatedCountAttribute(){
+        return Solution::where('subject', $this->attributes['subject_id'])->count();
+    }
+
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -27,6 +45,10 @@ class Task extends Model
 
     protected $casts = [
     ];
+
+    public function solutions(){
+        return $this->hasMany('App\Solution');
+    }
 
     public function subject()
     {

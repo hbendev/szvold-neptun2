@@ -34,4 +34,10 @@ class Tasks extends Controller
 
         return redirect('home'); // TODO: ehelyett tárgy részleteire vissza
     }
+
+    public function getTask($taskId){
+        $task = Task::with(['subject', 'subject.creator', 'solutions', 'solutions.student'])->find($taskId);
+
+        return response()->json($task);
+    }
 }

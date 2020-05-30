@@ -61,6 +61,9 @@ Route::get('/subjects/{subjectid}/task/create', function ($id) {
 })->middleware('auth');
 Route::post('/subjects/{subjectid}/task/create', 'Tasks@create')->name('taskCreate');
 
+Route::get('/tasks/{taskId}', function ($task) {
+    return view('task')->with('task', $task);
+})->middleware('auth');
 
 Route::get('/home', 'HomeController@index')->middleware('auth')->name('home');
 
@@ -75,3 +78,5 @@ Route::post('/api/abandonSubject/{subject}', 'Users@abandonSubject');
 Route::post('/api/enrollSubject/{subject}', 'Users@enrollSubject');
 Route::get('/api/subjects/{subject}', 'Subjects@getSubject');
 Route::post('/api/subjects/{subject}/delete', 'Subjects@deleteSubject');
+Route::get('/api/tasks/{task}', 'Tasks@getTask');
+Route::post('/api/tasks/{task}/solution', 'Solutions@create');

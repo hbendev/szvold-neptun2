@@ -30,11 +30,11 @@ class Solution extends Model
 
     public function task()
     {
-        return $this->belongsTo('App\Solution', 'subject_id');
+        return $this->belongsTo('App\Task', 'task_id');
     }
 
-    public function teacher()
+    public function student()
     {
-        return $this->belongsTo('App\Solution', 'user_id');
+        return $this->belongsTo('App\User', 'user_id');
     }
 }
