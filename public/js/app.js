@@ -22053,6 +22053,31 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+function create_if_block_1(ctx) {
+	let p;
+	let t;
+
+	return {
+		c() {
+			p = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("p");
+			t = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(/*err*/ ctx[1]);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(p, "role", "alert");
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(p, "class", "text-red-500 text-xs italic");
+		},
+		m(target, anchor) {
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["insert"])(target, p, anchor);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(p, t);
+		},
+		p(ctx, dirty) {
+			if (dirty & /*err*/ 2) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["set_data"])(t, /*err*/ ctx[1]);
+		},
+		d(detaching) {
+			if (detaching) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["detach"])(p);
+		}
+	};
+}
+
+// (87:6) {#if err}
 function create_if_block(ctx) {
 	let p;
 	let t;
@@ -22081,33 +22106,49 @@ function create_fragment(ctx) {
 	let form;
 	let div1;
 	let div0;
-	let label;
+	let label0;
 	let t1;
 	let textarea;
 	let t2;
 	let t3;
+	let div3;
+	let div2;
+	let label1;
+	let t5;
+	let input;
+	let t6;
+	let t7;
 	let button;
 	let dispose;
-	let if_block = /*err*/ ctx[1] && create_if_block(ctx);
+	let if_block0 = /*err*/ ctx[1] && create_if_block_1(ctx);
+	let if_block1 = /*err*/ ctx[1] && create_if_block(ctx);
 
 	return {
 		c() {
 			form = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("form");
 			div1 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("div");
 			div0 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("div");
-			label = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("label");
-			label.textContent = "Megoldás";
+			label0 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("label");
+			label0.textContent = "Megoldás";
 			t1 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
 			textarea = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("textarea");
 			t2 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
-			if (if_block) if_block.c();
+			if (if_block0) if_block0.c();
 			t3 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
+			div3 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("div");
+			div2 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("div");
+			label1 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("label");
+			label1.textContent = "Fájl";
+			t5 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
+			input = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("input");
+			t6 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
+			if (if_block1) if_block1.c();
+			t7 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
 			button = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("button");
 			button.textContent = "Megoldás beküldése";
 			this.c = svelte_internal__WEBPACK_IMPORTED_MODULE_0__["noop"];
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(label, "required", "");
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(label, "class", "block uppercase tracking-wide text-gray-700 text-xs font-bold\n        mb-2");
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(label, "for", "credit");
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(label0, "class", "block uppercase tracking-wide text-gray-700 text-xs font-bold\n        mb-2");
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(label0, "for", "credit");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(textarea, "autocomplete", "description");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(textarea, "class", "appearance-none block w-full bg-gray-200 text-gray-700 border\n        border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none\n        focus:bg-white focus:border-gray-500 min-h-32");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(textarea, "id", "description");
@@ -22115,6 +22156,14 @@ function create_fragment(ctx) {
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(textarea, "placeholder", "Kezdjen el gépelni...");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(div0, "class", "w-full px-3");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(div1, "class", "flex flex-wrap -mx-3 mb-6");
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(label1, "class", "block uppercase tracking-wide text-gray-700 text-xs font-bold\n        mb-2");
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(label1, "for", "file");
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(input, "class", "appearance-none block w-full bg-gray-200 text-gray-700 border\n        border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none\n        focus:bg-white focus:border-gray-500");
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(input, "id", "file");
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(input, "name", "file");
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(input, "type", "file");
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(div2, "class", "w-full px-3");
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(div3, "class", "flex flex-wrap -mx-3 mb-6");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(button, "class", "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded\n    focus:outline-none focus:shadow-outline mt-8");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(button, "type", "submit");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(form, "class", "w-full max-w-lg mx-auto");
@@ -22123,19 +22172,28 @@ function create_fragment(ctx) {
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["insert"])(target, form, anchor);
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(form, div1);
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(div1, div0);
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(div0, label);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(div0, label0);
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(div0, t1);
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(div0, textarea);
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["set_input_value"])(textarea, /*text*/ ctx[0]);
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(div0, t2);
-			if (if_block) if_block.m(div0, null);
+			if (if_block0) if_block0.m(div0, null);
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(form, t3);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(form, div3);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(div3, div2);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(div2, label1);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(div2, t5);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(div2, input);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(div2, t6);
+			if (if_block1) if_block1.m(div2, null);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(form, t7);
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(form, button);
 			if (remount) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["run_all"])(dispose);
 
 			dispose = [
-				Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["listen"])(textarea, "input", /*textarea_input_handler*/ ctx[4]),
-				Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["listen"])(form, "submit", /*handlePost*/ ctx[2])
+				Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["listen"])(textarea, "input", /*textarea_input_handler*/ ctx[5]),
+				Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["listen"])(input, "change", /*input_change_handler*/ ctx[6]),
+				Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["listen"])(form, "submit", /*handlePost*/ ctx[3])
 			];
 		},
 		p(ctx, [dirty]) {
@@ -22144,23 +22202,37 @@ function create_fragment(ctx) {
 			}
 
 			if (/*err*/ ctx[1]) {
-				if (if_block) {
-					if_block.p(ctx, dirty);
+				if (if_block0) {
+					if_block0.p(ctx, dirty);
 				} else {
-					if_block = create_if_block(ctx);
-					if_block.c();
-					if_block.m(div0, null);
+					if_block0 = create_if_block_1(ctx);
+					if_block0.c();
+					if_block0.m(div0, null);
 				}
-			} else if (if_block) {
-				if_block.d(1);
-				if_block = null;
+			} else if (if_block0) {
+				if_block0.d(1);
+				if_block0 = null;
+			}
+
+			if (/*err*/ ctx[1]) {
+				if (if_block1) {
+					if_block1.p(ctx, dirty);
+				} else {
+					if_block1 = create_if_block(ctx);
+					if_block1.c();
+					if_block1.m(div2, null);
+				}
+			} else if (if_block1) {
+				if_block1.d(1);
+				if_block1 = null;
 			}
 		},
 		i: svelte_internal__WEBPACK_IMPORTED_MODULE_0__["noop"],
 		o: svelte_internal__WEBPACK_IMPORTED_MODULE_0__["noop"],
 		d(detaching) {
 			if (detaching) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["detach"])(form);
-			if (if_block) if_block.d();
+			if (if_block0) if_block0.d();
+			if (if_block1) if_block1.d();
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["run_all"])(dispose);
 		}
 	};
@@ -22170,6 +22242,7 @@ function instance($$self, $$props, $$invalidate) {
 	let { taskid } = $$props;
 	let text = "";
 	let err = null;
+	let files;
 
 	async function handlePost(e) {
 		e.preventDefault();
@@ -22180,21 +22253,22 @@ function instance($$self, $$props, $$invalidate) {
 		}
 
 		$$invalidate(1, err = null);
-		console.log(taskid);
-		console.log(text);
 		let token = document.querySelector("meta[name=\"csrf-token\"]").getAttribute("content");
 
 		try {
+			const data = new FormData();
+			data.append("file", files && files[0]);
+			data.append("solution", text);
+
 			await fetch(`/api/tasks/${taskid}/solution`, {
 				method: "POST", // todo: web routes don't support delete method...
 				headers: {
-					"Content-Type": "application/json",
 					Accept: "application/json, text-plain, */*",
 					"X-Requested-With": "XMLHttpRequest",
 					"X-CSRF-TOKEN": token
 				},
 				credentials: "same-origin",
-				body: JSON.stringify({ solution: text })
+				body: data
 			});
 
 			//   window.location.replace("/home"); // todo: redirect feladat részletei oldalra ( ugyan ez? )
@@ -22210,18 +22284,31 @@ function instance($$self, $$props, $$invalidate) {
 		$$invalidate(0, text);
 	}
 
+	function input_change_handler() {
+		files = this.files;
+		$$invalidate(2, files);
+	}
+
 	$$self.$set = $$props => {
-		if ("taskid" in $$props) $$invalidate(3, taskid = $$props.taskid);
+		if ("taskid" in $$props) $$invalidate(4, taskid = $$props.taskid);
 	};
 
-	return [text, err, handlePost, taskid, textarea_input_handler];
+	return [
+		text,
+		err,
+		files,
+		handlePost,
+		taskid,
+		textarea_input_handler,
+		input_change_handler
+	];
 }
 
 class Solution extends svelte_internal__WEBPACK_IMPORTED_MODULE_0__["SvelteElement"] {
 	constructor(options) {
 		super();
 		this.shadowRoot.innerHTML = `<style>@import "/css/app.css";</style>`;
-		Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["init"])(this, { target: this.shadowRoot }, instance, create_fragment, svelte_internal__WEBPACK_IMPORTED_MODULE_0__["safe_not_equal"], { taskid: 3 });
+		Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["init"])(this, { target: this.shadowRoot }, instance, create_fragment, svelte_internal__WEBPACK_IMPORTED_MODULE_0__["safe_not_equal"], { taskid: 4 });
 
 		if (options) {
 			if (options.target) {
@@ -22240,7 +22327,7 @@ class Solution extends svelte_internal__WEBPACK_IMPORTED_MODULE_0__["SvelteEleme
 	}
 
 	get taskid() {
-		return this.$$.ctx[3];
+		return this.$$.ctx[4];
 	}
 
 	set taskid(taskid) {

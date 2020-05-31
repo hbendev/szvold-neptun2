@@ -3,6 +3,7 @@
   export let taskid;
   let text = "";
   let err = null;
+  let files;
 
   async function handlePost(e) {
     e.preventDefault();
@@ -11,22 +12,23 @@
       return;
     }
     err = null;
-    console.log(taskid);
-    console.log(text);
     let token = document
       .querySelector('meta[name="csrf-token"]')
       .getAttribute("content");
     try {
+      const data = new FormData();
+      data.append("file", files && files[0]);
+      data.append("solution", text);
+
       await fetch(`/api/tasks/${taskid}/solution`, {
         method: "POST", // todo: web routes don't support delete method...
         headers: {
-          "Content-Type": "application/json",
           Accept: "application/json, text-plain, */*",
           "X-Requested-With": "XMLHttpRequest",
           "X-CSRF-TOKEN": token
         },
         credentials: "same-origin",
-        body: JSON.stringify({ solution: text })
+        body: data
       });
       //   window.location.replace("/home"); // todo: redirect feladat részletei oldalra ( ugyan ez? )
 
@@ -46,7 +48,6 @@
   <div class="flex flex-wrap -mx-3 mb-6">
     <div class="w-full px-3">
       <label
-        required
         class="block uppercase tracking-wide text-gray-700 text-xs font-bold
         mb-2"
         for="credit">
@@ -64,7 +65,28 @@
       {#if err}
         <p role="alert" class="text-red-500 text-xs italic">{err}</p>
       {/if}
+    </div>
+  </div>
+  <div class="flex flex-wrap -mx-3 mb-6">
+    <div class="w-full px-3">
+      <label
+        class="block uppercase tracking-wide text-gray-700 text-xs font-bold
+        mb-2"
+        for="file">
+        Fájl
+      </label>
+      <input
+        class="appearance-none block w-full bg-gray-200 text-gray-700 border
+        border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none
+        focus:bg-white focus:border-gray-500"
+        id="file"
+        name="file"
+        type="file"
+        bind:files />
 
+      {#if err}
+        <p role="alert" class="text-red-500 text-xs italic">{err}</p>
+      {/if}
     </div>
   </div>
   <button

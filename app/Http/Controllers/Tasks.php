@@ -65,6 +65,8 @@ class Tasks extends Controller
         return response()->json($task);
     }
 
+    // $feladatok=Feladat::all()->groupBy('subjectId');
+
     public function getTaskCount(){
         $count = DB::table('tasks')->count();
 

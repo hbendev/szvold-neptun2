@@ -19,6 +19,13 @@ class Solutions extends Controller
         ]);
 
         $solution = new Solution;
+        $path = "";
+        if ($request->hasFile('file')){
+            $path = $request->file('file')->store('');
+            $solution->filePath = $path;
+        }
+
+
         $solution->solution = $request->solution;
         $solution->student()->associate(Auth::user()->id);
         $solution->task()->associate($taskId);
