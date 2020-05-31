@@ -34,6 +34,11 @@ class LmsSeeder extends Seeder
             $subject -> creator() -> associate($superTeacher);
             $subject -> students() -> sync($superStudent);
             $subject -> save();
+
+            factory(App\Task::class, 2)->create()->each(function ($task) use ($subject) {
+                $task -> subject() -> associate($subject);
+                $task -> save();
+            });
         });
     }
 }

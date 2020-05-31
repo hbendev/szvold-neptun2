@@ -1,7 +1,7 @@
 <script>
   import { onMount } from "svelte";
   export let taskid;
-  let text;
+  let text = "";
   let err = null;
 
   async function handlePost(e) {

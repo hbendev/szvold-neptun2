@@ -37,8 +37,10 @@
     <p>Kezdés: {new Date(task.from).toLocaleDateString('hu')}</p>
     <p>Határidő: {new Date(task.to).toLocaleDateString('hu')}</p>
     {#if isTrue(teacher)}
-      <p>Beadott megoldások száma: {task.solvedCount}</p>
-      <p>Értékelt megoldások száma: {task.ratedCount} todo</p>
+      <p>Beadott megoldások száma: {task.solutions && task.solutions.length}</p>
+      <p>
+        Értékelt megoldások száma: {(task.solutions || []).filter(x => x.rated).length}
+      </p>
     {/if}
   </div>
   {#if isTrue(teacher)}

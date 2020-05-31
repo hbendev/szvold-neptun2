@@ -26,6 +26,7 @@ class Solution extends Model
     ];
 
     protected $casts = [
+        'rated' => 'boolean',
     ];
 
     public function task()

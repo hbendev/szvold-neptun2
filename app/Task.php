@@ -18,21 +18,13 @@ class Task extends Model
     protected $fillable = [
     ];
 
-    protected $appends = ['solved', 'solvedCount', 'ratedCount'];
+    protected $appends = ['solved'];
 
     public function getSolvedAttribute(){
         if(Auth::user()->type === 'teacher'){
             return false;
         }
         return Solution::where('student', Auth::user()->id)->exists();
-    }
-
-    public function getSolvedCountAttribute(){
-        return Solution::where('subject', $this->attributes['subject_id'])->count();
-    }
-
-    public function getRatedCountAttribute(){
-        return Solution::where('subject', $this->attributes['subject_id'])->count();
     }
 
     /**

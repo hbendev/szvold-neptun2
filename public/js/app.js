@@ -22168,7 +22168,7 @@ function create_fragment(ctx) {
 
 function instance($$self, $$props, $$invalidate) {
 	let { taskid } = $$props;
-	let text;
+	let text = "";
 	let err = null;
 
 	async function handlePost(e) {
@@ -23858,14 +23858,13 @@ function create_if_block_2(ctx) {
 function create_if_block_1(ctx) {
 	let p0;
 	let t0;
-	let t1_value = /*task*/ ctx[0].solvedCount + "";
+	let t1_value = (/*task*/ ctx[0].solutions && /*task*/ ctx[0].solutions.length) + "";
 	let t1;
 	let t2;
 	let p1;
 	let t3;
-	let t4_value = /*task*/ ctx[0].ratedCount + "";
+	let t4_value = (/*task*/ ctx[0].solutions || []).filter(func).length + "";
 	let t4;
-	let t5;
 
 	return {
 		c() {
@@ -23876,7 +23875,6 @@ function create_if_block_1(ctx) {
 			p1 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("p");
 			t3 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])("Értékelt megoldások száma: ");
 			t4 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(t4_value);
-			t5 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(" todo");
 		},
 		m(target, anchor) {
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["insert"])(target, p0, anchor);
@@ -23886,11 +23884,10 @@ function create_if_block_1(ctx) {
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["insert"])(target, p1, anchor);
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(p1, t3);
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(p1, t4);
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(p1, t5);
 		},
 		p(ctx, dirty) {
-			if (dirty & /*task*/ 1 && t1_value !== (t1_value = /*task*/ ctx[0].solvedCount + "")) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["set_data"])(t1, t1_value);
-			if (dirty & /*task*/ 1 && t4_value !== (t4_value = /*task*/ ctx[0].ratedCount + "")) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["set_data"])(t4, t4_value);
+			if (dirty & /*task*/ 1 && t1_value !== (t1_value = (/*task*/ ctx[0].solutions && /*task*/ ctx[0].solutions.length) + "")) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["set_data"])(t1, t1_value);
+			if (dirty & /*task*/ 1 && t4_value !== (t4_value = (/*task*/ ctx[0].solutions || []).filter(func).length + "")) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["set_data"])(t4, t4_value);
 		},
 		d(detaching) {
 			if (detaching) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["detach"])(p0);
@@ -23900,7 +23897,7 @@ function create_if_block_1(ctx) {
 	};
 }
 
-// (44:2) {#if isTrue(teacher)}
+// (46:2) {#if isTrue(teacher)}
 function create_if_block(ctx) {
 	let table;
 	let thead;
@@ -23977,7 +23974,7 @@ function create_if_block(ctx) {
 	};
 }
 
-// (62:8) {#each task.students || [] as student}
+// (64:8) {#each task.students || [] as student}
 function create_each_block(ctx) {
 	let tr;
 	let td0;
@@ -24209,6 +24206,8 @@ function transformDate(str) {
 function isTrue(bool) {
 	return bool === "true";
 }
+
+const func = x => x.rated;
 
 function instance($$self, $$props, $$invalidate) {
 	let { task = {} } = $$props;
