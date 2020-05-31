@@ -40,7 +40,7 @@
           <a href="/enroll">Tárgy felvétele</a>
         </li>
         <li class="hover:text-white hover:font-bold">
-          <a href="/todo">Feladatok listája</a>
+          <a href="/tasksGrouped">Feladatok listája</a>
         </li>
         <li class="hover:text-white hover:font-bold">
           <a href="/profile">

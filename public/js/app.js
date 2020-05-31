@@ -21400,7 +21400,7 @@ function create_else_block(ctx) {
 			li1.innerHTML = `<a href="/enroll">Tárgy felvétele</a>`;
 			t3 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
 			li2 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("li");
-			li2.innerHTML = `<a href="/todo">Feladatok listája</a>`;
+			li2.innerHTML = `<a href="/tasksGrouped">Feladatok listája</a>`;
 			t5 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
 			li3 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("li");
 			a3 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("a");

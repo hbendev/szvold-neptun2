@@ -12,7 +12,6 @@ class Tasks extends Controller
 {
     protected function create(Request $request, $subjectId)
     {
-
         $subject = Subject::find($subjectId);
         Gate::authorize('update-subject', $subject);
 
@@ -65,7 +64,12 @@ class Tasks extends Controller
         return response()->json($task);
     }
 
-    // $feladatok=Feladat::all()->groupBy('subjectId');
+
+    public function tasksBySubjects(){
+        $tasks = Task::with(['subject'])->get()->groupBy('subject_id');
+
+        return view('tasksgrouped')->with('groups', $tasks);
+    }
 
     public function getTaskCount(){
         $count = DB::table('tasks')->count();

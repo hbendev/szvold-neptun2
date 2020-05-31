@@ -92,6 +92,8 @@ Route::get('/solutions/{solutionId}/file', function ($id) {
 })->middleware('auth');
 
 
+Route::get('/tasksGrouped', 'Tasks@tasksBySubjects');
+
 Route::get('/home', 'HomeController@index')->middleware('auth')->name('home');
 
 Route::get('/api/users', 'Users@getUsers');

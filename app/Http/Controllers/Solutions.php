@@ -20,20 +20,22 @@ class Solutions extends Controller
         ]);
 
         $solution = new Solution;
-        $path = "";
-        if ($request->hasFile('file')){
-            $fileName = $request->file('file')->getClientOriginalName();
-            $path = $request->file('file')->storeAs(
-                'solutions/' . $task->id, $fileName
-            );
-            $solution->filePath = $path;
-        }
 
 
         $solution->solution = $request->solution;
         $solution->student()->associate(Auth::user()->id);
         $solution->task()->associate($taskId);
         $solution->save();
+
+        $path = "";
+        if ($request->hasFile('file')){
+            $fileName = $request->file('file')->getClientOriginalName();
+            $path = $request->file('file')->storeAs(
+                'solutions/' . $solution->id, $fileName
+            );
+            $solution->filePath = $path;
+            $solution->save();
+        }
 
         return response()->json($solution);
     }
