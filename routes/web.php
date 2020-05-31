@@ -1,6 +1,7 @@
 <?php
 
 use App\Subject;
+use App\Task;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
@@ -56,6 +57,14 @@ Route::get('/subjects/{subjectId}/edit', function ($subjectId) {
 })->middleware('auth');
 Route::post('/subjects/{subjectId}/edit', 'Subjects@update')->name('update-subject');
 
+Route::get('/tasks/{taskId}/edit', function ($taskid) {
+    $task = Task::with(['subject', 'subject.creator', 'solutions', 'solutions.student'])->findOrFail($taskid);
+    Gate::authorize('update-task', $task);
+
+    return view('taskedit')->with('task', $task);
+})->middleware('auth');
+Route::post('/tasks/{taskId}/edit', 'Tasks@update')->name('update-task');
+
 Route::get('/subjects/{subjectid}/task/create', function ($id) {
     return view('taskcreate')->with('id', $id);
 })->middleware('auth');
@@ -70,6 +79,8 @@ Route::get('/home', 'HomeController@index')->middleware('auth')->name('home');
 Route::get('/api/users', 'Users@getUsers');
 Route::get('/api/studentCount', 'Users@getStudentCount');
 Route::get('/api/teacherCount', 'Users@getTeacherCount');
+Route::get('/api/taskCount', 'Tasks@getTaskCount');
+Route::get('/api/solutionCount', 'Solutions@getSolutionCount');
 Route::get('/api/subjectsCreatedBy', 'Subjects@subjectsCreatedByTeacher');
 Route::post('/api/changeSubjectPublish/{subject}', 'Subjects@changeSubjectPublish');
 Route::get('/api/studentSubjects/{student}', 'Subjects@studentSubjects');

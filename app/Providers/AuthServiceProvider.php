@@ -28,6 +28,10 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('update-subject', function ($user, $subject) {
             return $user->id == $subject->creator_id;
         });
+
+        Gate::define('update-task', function ($user, $task) {
+            return $user->id == $task->subject->creator_id;
+        });
     }
 
 }

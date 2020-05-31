@@ -40,18 +40,11 @@
 
 {#if usertype === 'teacher'}
   <div class="flex justify-between container mx-auto">
-    <a href={`/subjects/${taskid}/edit`}>
+    <a href={`/tasks/${taskid}/edit`}>
       <button
         class="font-bold py-2 px-4 rounded text-lg bg-blue-400 hover:bg-blue-600
         text-white ">
         Szerkesztés
-      </button>
-    </a>
-    <a href={`/subjects/${taskid}/task/create`}>
-      <button
-        class="font-bold py-2 px-4 rounded text-lg bg-blue-400 hover:bg-blue-600
-        text-white ">
-        Új feladat
       </button>
     </a>
     <button

@@ -6,6 +6,7 @@ use App\Solution;
 use App\Task;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class Solutions extends Controller
 {
@@ -24,5 +25,11 @@ class Solutions extends Controller
         $solution->save();
 
         return response()->json($solution);
+    }
+
+    public function getSolutionCount(){
+        $count = DB::table('solutions')->count();
+
+        return $count;
     }
 }

@@ -6,6 +6,7 @@ use App\Subject;
 use App\Task;
 use Gate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class Tasks extends Controller
 {
@@ -39,5 +40,11 @@ class Tasks extends Controller
         $task = Task::with(['subject', 'subject.creator', 'solutions', 'solutions.student'])->find($taskId);
 
         return response()->json($task);
+    }
+
+    public function getTaskCount(){
+        $count = DB::table('tasks')->count();
+
+        return $count;
     }
 }

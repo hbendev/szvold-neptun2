@@ -29,8 +29,11 @@
         body: JSON.stringify({ solution: text })
       });
       //   window.location.replace("/home"); // todo: redirect feladat részletei oldalra ( ugyan ez? )
+
+      text = "";
     } catch (err) {
       console.error(err);
+      err = err.message;
     }
   }
 </script>
@@ -68,6 +71,6 @@
     class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded
     focus:outline-none focus:shadow-outline mt-8"
     type="submit">
-    Feladat beadása
+    Megoldás beküldése
   </button>
 </form>
