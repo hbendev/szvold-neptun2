@@ -39,7 +39,7 @@
     {#if isTrue(teacher)}
       <p>Beadott megoldások száma: {task.solutions && task.solutions.length}</p>
       <p>
-        Értékelt megoldások száma: {(task.solutions || []).filter(x => x.rated).length}
+        Értékelt megoldások száma: {(task.solutions || []).filter(x => !!x.rating).length}
       </p>
     {/if}
   </div>
@@ -58,15 +58,55 @@
             text-grey-600 border-b border-gray-400">
             Email
           </th>
+          <th
+            class="py-4 px-6 bg-gray-100 font-bold uppercase text-sm
+            text-grey-600 border-b border-gray-400">
+            Beadási idő
+          </th>
+          <th
+            class="py-4 px-6 bg-gray-100 font-bold uppercase text-sm
+            text-grey-600 border-b border-gray-400">
+            Elért pontszám
+          </th>
+          <th
+            class="py-4 px-6 bg-gray-100 font-bold uppercase text-sm
+            text-grey-600 border-b border-gray-400">
+            Értékelés időpontja
+          </th>
+          <th
+            class="py-4 px-6 bg-gray-100 font-bold uppercase text-sm
+            text-grey-600 border-b border-gray-400">
+            Akciók
+          </th>
         </tr>
       </thead>
       <tbody>
-        {#each task.students || [] as student}
+        {#each task.solutions || [] as solution}
           <tr class="hover:bg-gray-300">
             <td class="py-4 px-6 border-b border-gray-400">
-              {student.lastName} {student.firstName}
+              {solution.student.lastName} {solution.student.firstName}
             </td>
-            <td class="py-4 px-6 border-b border-gray-400">{student.email}</td>
+            <td class="py-4 px-6 border-b border-gray-400">
+              {solution.student.email}
+            </td>
+            <td class="py-4 px-6 border-b border-gray-400">
+              {new Date(solution.created_at).toLocaleDateString('hu')}
+            </td>
+            <td class="py-4 px-6 border-b border-gray-400">
+              {solution.rating || '-'}
+            </td>
+            <td class="py-4 px-6 border-b border-gray-400">
+              {solution.rating_time || '-'}
+            </td>
+            <td class="py-4 px-6 border-b border-gray-400">
+              <a href={`/solutions/${solution.id}/rate`}>
+                <button
+                  class="text-gray-200 font-bold py-1 px-3 rounded text-xs
+                  bg-blue-400 hover:bg-blue-600">
+                  {!solution.rating ? 'Értékelés' : 'Értékelés módosítása'}
+                </button>
+              </a>
+            </td>
           </tr>
         {/each}
       </tbody>

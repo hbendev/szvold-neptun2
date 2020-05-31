@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Solution;
 use App\Task;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -21,7 +22,10 @@ class Solutions extends Controller
         $solution = new Solution;
         $path = "";
         if ($request->hasFile('file')){
-            $path = $request->file('file')->store('');
+            $fileName = $request->file('file')->getClientOriginalName();
+            $path = $request->file('file')->storeAs(
+                'solutions/' . $task->id, $fileName
+            );
             $solution->filePath = $path;
         }
 
@@ -32,6 +36,18 @@ class Solutions extends Controller
         $solution->save();
 
         return response()->json($solution);
+    }
+
+    public function rate(Request $request, $solutionId){
+        $solution = Solution::with(['task'])->find($solutionId);
+
+        $solution->rating = $request->rating;
+        $solution->review = $request->review;
+        $solution->rating_time = Carbon::now();
+
+        $solution->save();
+
+        return redirect("/tasks/" . $solution->task->id );
     }
 
     public function getSolutionCount(){

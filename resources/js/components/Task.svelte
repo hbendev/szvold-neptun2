@@ -47,12 +47,6 @@
         Szerkesztés
       </button>
     </a>
-    <button
-      on:click={handleDelete}
-      class="font-bold py-2 px-4 rounded text-lg bg-red-400 hover:bg-red-600
-      text-white ">
-      Törlés
-    </button>
 
   </div>
   <task-info {userid} {task} teacher={true} />

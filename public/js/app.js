@@ -23631,44 +23631,33 @@ function create_else_block(ctx) {
 function create_if_block(ctx) {
 	let div;
 	let a;
-	let button0;
+	let button;
 	let a_href_value;
 	let t1;
-	let button1;
-	let t3;
 	let task_info;
 	let task_info_teacher_value;
-	let dispose;
 
 	return {
 		c() {
 			div = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("div");
 			a = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("a");
-			button0 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("button");
-			button0.textContent = "Szerkesztés";
+			button = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("button");
+			button.textContent = "Szerkesztés";
 			t1 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
-			button1 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("button");
-			button1.textContent = "Törlés";
-			t3 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
 			task_info = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("task-info");
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(button0, "class", "font-bold py-2 px-4 rounded text-lg bg-blue-400 hover:bg-blue-600\n        text-white ");
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(button, "class", "font-bold py-2 px-4 rounded text-lg bg-blue-400 hover:bg-blue-600\n        text-white ");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(a, "href", a_href_value = `/tasks/${/*taskid*/ ctx[2]}/edit`);
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(button1, "class", "font-bold py-2 px-4 rounded text-lg bg-red-400 hover:bg-red-600\n      text-white ");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(div, "class", "flex justify-between container mx-auto");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["set_custom_element_data"])(task_info, "userid", /*userid*/ ctx[0]);
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["set_custom_element_data"])(task_info, "task", /*task*/ ctx[3]);
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["set_custom_element_data"])(task_info, "teacher", task_info_teacher_value = true);
 		},
-		m(target, anchor, remount) {
+		m(target, anchor) {
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["insert"])(target, div, anchor);
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(div, a);
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(a, button0);
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(div, t1);
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(div, button1);
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["insert"])(target, t3, anchor);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(a, button);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["insert"])(target, t1, anchor);
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["insert"])(target, task_info, anchor);
-			if (remount) dispose();
-			dispose = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["listen"])(button1, "click", /*handleDelete*/ ctx[4]);
 		},
 		p(ctx, dirty) {
 			if (dirty & /*taskid*/ 4 && a_href_value !== (a_href_value = `/tasks/${/*taskid*/ ctx[2]}/edit`)) {
@@ -23685,9 +23674,8 @@ function create_if_block(ctx) {
 		},
 		d(detaching) {
 			if (detaching) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["detach"])(div);
-			if (detaching) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["detach"])(t3);
+			if (detaching) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["detach"])(t1);
 			if (detaching) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["detach"])(task_info);
-			dispose();
 		}
 	};
 }
@@ -23777,7 +23765,7 @@ function instance($$self, $$props, $$invalidate) {
 		if ("taskid" in $$props) $$invalidate(2, taskid = $$props.taskid);
 	};
 
-	return [userid, usertype, taskid, task, handleDelete];
+	return [userid, usertype, taskid, task];
 }
 
 class Task extends svelte_internal__WEBPACK_IMPORTED_MODULE_0__["SvelteElement"] {
@@ -23988,9 +23976,9 @@ function create_if_block_1(ctx) {
 function create_if_block(ctx) {
 	let table;
 	let thead;
-	let t3;
+	let t11;
 	let tbody;
-	let each_value = /*task*/ ctx[0].students || [];
+	let each_value = /*task*/ ctx[0].solutions || [];
 	let each_blocks = [];
 
 	for (let i = 0; i < each_value.length; i += 1) {
@@ -24009,9 +23997,25 @@ function create_if_block(ctx) {
           <th class="py-4 px-6 bg-gray-100 font-bold uppercase text-sm
             text-grey-600 border-b border-gray-400">
             Email
+          </th> 
+          <th class="py-4 px-6 bg-gray-100 font-bold uppercase text-sm
+            text-grey-600 border-b border-gray-400">
+            Beadási idő
+          </th> 
+          <th class="py-4 px-6 bg-gray-100 font-bold uppercase text-sm
+            text-grey-600 border-b border-gray-400">
+            Elért pontszám
+          </th> 
+          <th class="py-4 px-6 bg-gray-100 font-bold uppercase text-sm
+            text-grey-600 border-b border-gray-400">
+            Értékelés időpontja
+          </th> 
+          <th class="py-4 px-6 bg-gray-100 font-bold uppercase text-sm
+            text-grey-600 border-b border-gray-400">
+            Akciók
           </th></tr>`;
 
-			t3 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
+			t11 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
 			tbody = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("tbody");
 
 			for (let i = 0; i < each_blocks.length; i += 1) {
@@ -24023,7 +24027,7 @@ function create_if_block(ctx) {
 		m(target, anchor) {
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["insert"])(target, table, anchor);
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(table, thead);
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(table, t3);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(table, t11);
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(table, tbody);
 
 			for (let i = 0; i < each_blocks.length; i += 1) {
@@ -24031,8 +24035,8 @@ function create_if_block(ctx) {
 			}
 		},
 		p(ctx, dirty) {
-			if (dirty & /*task*/ 1) {
-				each_value = /*task*/ ctx[0].students || [];
+			if (dirty & /*task, Date*/ 1) {
+				each_value = /*task*/ ctx[0].solutions || [];
 				let i;
 
 				for (i = 0; i < each_value.length; i += 1) {
@@ -24061,20 +24065,43 @@ function create_if_block(ctx) {
 	};
 }
 
-// (64:8) {#each task.students || [] as student}
+// (84:8) {#each task.solutions || [] as solution}
 function create_each_block(ctx) {
 	let tr;
 	let td0;
-	let t0_value = /*student*/ ctx[3].lastName + "";
+	let t0_value = /*solution*/ ctx[3].student.lastName + "";
 	let t0;
 	let t1;
-	let t2_value = /*student*/ ctx[3].firstName + "";
+	let t2_value = /*solution*/ ctx[3].student.firstName + "";
 	let t2;
 	let t3;
 	let td1;
-	let t4_value = /*student*/ ctx[3].email + "";
+	let t4_value = /*solution*/ ctx[3].student.email + "";
 	let t4;
 	let t5;
+	let td2;
+	let t6_value = new Date(/*solution*/ ctx[3].created_at).toLocaleDateString("hu") + "";
+	let t6;
+	let t7;
+	let td3;
+	let t8_value = (/*solution*/ ctx[3].rating || "-") + "";
+	let t8;
+	let t9;
+	let td4;
+	let t10_value = (/*solution*/ ctx[3].rating_time || "-") + "";
+	let t10;
+	let t11;
+	let td5;
+	let a;
+	let button;
+
+	let t12_value = (!/*solution*/ ctx[3].rating
+	? "Értékelés"
+	: "Értékelés módosítása") + "";
+
+	let t12;
+	let a_href_value;
+	let t13;
 
 	return {
 		c() {
@@ -24087,8 +24114,28 @@ function create_each_block(ctx) {
 			td1 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("td");
 			t4 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(t4_value);
 			t5 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
+			td2 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("td");
+			t6 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(t6_value);
+			t7 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
+			td3 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("td");
+			t8 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(t8_value);
+			t9 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
+			td4 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("td");
+			t10 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(t10_value);
+			t11 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
+			td5 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("td");
+			a = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("a");
+			button = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("button");
+			t12 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(t12_value);
+			t13 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(td0, "class", "py-4 px-6 border-b border-gray-400");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(td1, "class", "py-4 px-6 border-b border-gray-400");
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(td2, "class", "py-4 px-6 border-b border-gray-400");
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(td3, "class", "py-4 px-6 border-b border-gray-400");
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(td4, "class", "py-4 px-6 border-b border-gray-400");
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(button, "class", "text-gray-200 font-bold py-1 px-3 rounded text-xs\n                  bg-blue-400 hover:bg-blue-600");
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(a, "href", a_href_value = `/solutions/${/*solution*/ ctx[3].id}/rate`);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(td5, "class", "py-4 px-6 border-b border-gray-400");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(tr, "class", "hover:bg-gray-300");
 		},
 		m(target, anchor) {
@@ -24101,11 +24148,36 @@ function create_each_block(ctx) {
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(tr, td1);
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(td1, t4);
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(tr, t5);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(tr, td2);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(td2, t6);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(tr, t7);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(tr, td3);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(td3, t8);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(tr, t9);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(tr, td4);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(td4, t10);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(tr, t11);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(tr, td5);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(td5, a);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(a, button);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(button, t12);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(tr, t13);
 		},
 		p(ctx, dirty) {
-			if (dirty & /*task*/ 1 && t0_value !== (t0_value = /*student*/ ctx[3].lastName + "")) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["set_data"])(t0, t0_value);
-			if (dirty & /*task*/ 1 && t2_value !== (t2_value = /*student*/ ctx[3].firstName + "")) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["set_data"])(t2, t2_value);
-			if (dirty & /*task*/ 1 && t4_value !== (t4_value = /*student*/ ctx[3].email + "")) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["set_data"])(t4, t4_value);
+			if (dirty & /*task*/ 1 && t0_value !== (t0_value = /*solution*/ ctx[3].student.lastName + "")) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["set_data"])(t0, t0_value);
+			if (dirty & /*task*/ 1 && t2_value !== (t2_value = /*solution*/ ctx[3].student.firstName + "")) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["set_data"])(t2, t2_value);
+			if (dirty & /*task*/ 1 && t4_value !== (t4_value = /*solution*/ ctx[3].student.email + "")) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["set_data"])(t4, t4_value);
+			if (dirty & /*task*/ 1 && t6_value !== (t6_value = new Date(/*solution*/ ctx[3].created_at).toLocaleDateString("hu") + "")) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["set_data"])(t6, t6_value);
+			if (dirty & /*task*/ 1 && t8_value !== (t8_value = (/*solution*/ ctx[3].rating || "-") + "")) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["set_data"])(t8, t8_value);
+			if (dirty & /*task*/ 1 && t10_value !== (t10_value = (/*solution*/ ctx[3].rating_time || "-") + "")) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["set_data"])(t10, t10_value);
+
+			if (dirty & /*task*/ 1 && t12_value !== (t12_value = (!/*solution*/ ctx[3].rating
+			? "Értékelés"
+			: "Értékelés módosítása") + "")) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["set_data"])(t12, t12_value);
+
+			if (dirty & /*task*/ 1 && a_href_value !== (a_href_value = `/solutions/${/*solution*/ ctx[3].id}/rate`)) {
+				Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(a, "href", a_href_value);
+			}
 		},
 		d(detaching) {
 			if (detaching) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["detach"])(tr);
@@ -24294,7 +24366,7 @@ function isTrue(bool) {
 	return bool === "true";
 }
 
-const func = x => x.rated;
+const func = x => !!x.rating;
 
 function instance($$self, $$props, $$invalidate) {
 	let { task = {} } = $$props;

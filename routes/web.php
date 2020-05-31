@@ -2,9 +2,11 @@
 
 use App\Subject;
 use App\Task;
+use App\Solution;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 
 /*
 |--------------------------------------------------------------------------
@@ -73,6 +75,22 @@ Route::post('/subjects/{subjectid}/task/create', 'Tasks@create')->name('taskCrea
 Route::get('/tasks/{taskId}', function ($task) {
     return view('task')->with('task', $task);
 })->middleware('auth');
+
+
+Route::get('/solutions/{solutionId}/rate', function ($id) {
+    $solution = Solution::with(['task'])->find($id);
+
+    return view('rate')->with('solution', $solution);
+})->middleware('auth');
+Route::post('/solutions/{solutionId}/rate', 'Solutions@rate' )->middleware('auth')->name('rate-solution');
+
+
+Route::get('/solutions/{solutionId}/file', function ($id) {
+    $solution = Solution::findOrFail($id);
+
+    return Storage::download($solution->filePath);
+})->middleware('auth');
+
 
 Route::get('/home', 'HomeController@index')->middleware('auth')->name('home');
 

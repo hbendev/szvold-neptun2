@@ -20,7 +20,10 @@ class CreateSolutionsTable extends Migration
 
             $table->string('solution');
             $table->string('filePath')->nullable();
-            $table->boolean('rated')->default(false);
+
+            $table->integer('rating')->nullable();
+            $table->integer('rating_time')->nullable();
+            $table->string('review')->nullable();
 
             $table->unsignedBigInteger('task_id')->nullable();
             $table->foreign('task_id')->references('id')->on('tasks');
